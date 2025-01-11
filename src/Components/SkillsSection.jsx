@@ -36,47 +36,47 @@ const SkillsSection = () => {
                 {/* Skills Grid Section */}
                 <div className="w-full md:w-1/2 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-2 text-center px-6">
                     <div>
-                        <FontAwesomeIcon icon={faHtml5} className="text-6xl text-orange-600" />
+                        <FontAwesomeIcon icon={faHtml5} className="text-6xl text-orange-600 hover:scale-105" />
                         <p className="mt-3 text-lg">HTML</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faCss3Alt} className="text-6xl text-blue-600" />
+                        <FontAwesomeIcon icon={faCss3Alt} className="text-6xl text-blue-600 hover:scale-105" />
                         <p className="mt-3 text-lg">CSS</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faJs} className="text-6xl text-yellow-500" />
+                        <FontAwesomeIcon icon={faJs} className="text-6xl text-yellow-500 hover:scale-105" />
                         <p className="mt-3 text-lg">JavaScript</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faNode} className="text-6xl text-green-600" />
+                        <FontAwesomeIcon icon={faNode} className="text-6xl text-green-600 hover:scale-105" />
                         <p className="mt-3 text-lg">Node.js</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faReact} className="text-6xl text-blue-400" />
+                        <FontAwesomeIcon icon={faReact} className="text-6xl text-blue-400 hover:scale-105" />
                         <p className="mt-3 text-lg">React</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faPython} className="text-6xl text-blue-500" />
+                        <FontAwesomeIcon icon={faPython} className="text-6xl text-blue-500 hover:scale-105" />
                         <p className="mt-3 text-lg">Python</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faGitAlt} className="text-6xl text-orange-500" />
+                        <FontAwesomeIcon icon={faGitAlt} className="text-6xl text-orange-500 hover:scale-105" />
                         <p className="mt-3 text-lg">Git</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faAws} className="text-6xl text-yellow-600" />
+                        <FontAwesomeIcon icon={faAws} className="text-6xl text-yellow-600 hover:scale-105" />
                         <p className="mt-3 text-lg">AWS</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faLinux} className="text-6xl text-gray-700 dark:text-gray-300" />
+                        <FontAwesomeIcon icon={faLinux} className="text-6xl text-gray-700 dark:text-gray-300 hover:scale-105" />
                         <p className="mt-3 text-lg">Linux</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faJava} className="text-6xl text-red-500" />
+                        <FontAwesomeIcon icon={faJava} className="text-6xl text-red-500 hover:scale-105" />
                         <p className="mt-3 text-lg">Java</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faDatabase} className="text-6xl text-purple-500" />
+                        <FontAwesomeIcon icon={faDatabase} className="text-6xl text-purple-500 hover:scale-105" />
                         <p className="mt-3 text-lg">Databases</p>
                     </div>
                 </div>

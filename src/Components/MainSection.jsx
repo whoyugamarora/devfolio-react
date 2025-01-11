@@ -5,13 +5,14 @@ const MainSection = () => {
   return (
     <section
       id="main"
-      className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-gray-200 to-gray-100 dark:from-gray-800 dark:to-gray-900"
+      className="flex flex-col items-center justify-center bg-gradient-to-r from-gray-200 to-gray-100 dark:from-gray-800 dark:to-gray-900"
+      style={{minHeight: "calc(100vh - 4rem)"}}
     >
       <div className="relative">
         <img
           src={yugamImage}
           alt="Yugam Arora"
-          className="w-64 h-64 lg:w-80 lg:h-80 rounded-[30%_70%_47%_53%/30%_30%_70%_70%] shadow-lg"
+          className="w-56 h-56 lg:w-80 lg:h-80 rounded-[30%_70%_47%_53%/30%_30%_70%_70%] shadow-lg z-0"
         />
       </div>
       <div className="mt-8 text-center">
