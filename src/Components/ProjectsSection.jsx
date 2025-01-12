@@ -11,7 +11,7 @@ const ProjectsSection = () => {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-6">
                 {/* Project 1 */}
-                <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg border-t-4 border-blue-500 hover:shadow-xl transition-shadow duration-300">
+                <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg border-t-4 border-blue-500 hover:shadow-xl transition-transform transform duration-300 ease-in-out hover:scale-105">
                     <img
                         src={projectbuddy}
                         alt="Project 1"
@@ -32,7 +32,7 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Project 2 */}
-                <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg border-t-4 border-green-500 hover:shadow-xl transition-shadow duration-300">
+                <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg border-t-4 border-green-500 hover:shadow-xl transition-transform transform duration-300 ease-in-out hover:scale-105">
                     <img
                         src={healthcaresystem}
                         alt="HealthCareSystem"
@@ -53,7 +53,7 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Project 3 */}
-                <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg border-t-4 border-yellow-500 hover:shadow-xl transition-shadow duration-300">
+                <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg border-t-4 border-yellow-500 hover:shadow-xl transition-transform transform duration-300 ease-in-out hover:scale-105">
                     <img
                         src={logrotationsystem}
                         alt="Project 3"

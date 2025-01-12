@@ -52,19 +52,19 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
             {/* Large Screen Navigation */}
             <div className="hidden md:flex items-center space-x-8 text-gray-800 dark:text-gray-200">
-                <Link to="/" className="hover:text-blue-500">
+                <Link to="/" className="hover:text-green-700">
                     Home
                 </Link>
-                <Link to="/mission" className="hover:text-blue-500">
+                <Link to="/mission" className="hover:text-green-700">
                     Mission
                 </Link>
-                <Link to="/opportunity" className="hover:text-blue-500">
+                <Link to="/opportunity" className="hover:text-green-700">
                     Opportunity
                 </Link>
-                <Link to="/certifications" className="hover:text-blue-500">
+                <Link to="/certifications" className="hover:text-green-700">
                     Certifications
                 </Link>
-                <Link to="/references" className="hover:text-blue-500">
+                <Link to="/references" className="hover:text-green-700">
                     References
                 </Link>
             </div>
@@ -83,31 +83,31 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             <div className="md:hidden">
                 <button
                     onClick={toggleMenu}
-                    className="text-gray-800 dark:text-gray-200 hover:text-blue-500"
+                    className="text-gray-800 dark:text-gray-200 hover:text-green-700"
                 >
                     <FontAwesomeIcon icon={isMenuOpen ? faXmark : faBars} className="text-2xl" />
                 </button>
                 {isMenuOpen && (
                     <div className="absolute left-0 top-16 w-64 bg-gray-100 dark:bg-gray-900 dark:text-gray-100 shadow-md rounded-md z-30">
                         <div className="flex flex-col p-4 space-y-4">
-                            <Link to='/' className="hover:text-blue-500" onClick={toggleMenu}>
+                            <Link to='/' className="hover:text-green-700" onClick={toggleMenu}>
                                 Home
                             </Link>
-                            <Link to="/mission" className="hover:text-blue-500" onClick={toggleMenu}>
+                            <Link to="/mission" className="hover:text-green-700" onClick={toggleMenu}>
                                 Mission
                             </Link>
-                            <Link to="/opportunity" className="hover:text-blue-500">
+                            <Link to="/opportunity" className="hover:text-green-700">
                                 Opportunity
                             </Link>
-                            <Link to="/certifications" className="hover:text-blue-500">
+                            <Link to="/certifications" className="hover:text-green-700">
                                 Certifications
                             </Link>
-                            <Link to="/references" className="hover:text-blue-500">
+                            <Link to="/references" className="hover:text-green-700">
                                 References
                             </Link>
                             <div
                                 onClick={toggleDarkMode}
-                                className="cursor-pointer hover:text-yellow-400 flex items-center space-x-2"
+                                className="cursor-pointer hover:text-yellow-500 flex items-center space-x-2"
                             >
                                 <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} className="text-xl" />
                                 <span>Toggle Theme</span>

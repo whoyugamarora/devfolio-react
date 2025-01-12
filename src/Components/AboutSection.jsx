@@ -3,7 +3,7 @@ import React from "react";
 const AboutSection = () => {
   return (
     <section id="about" className="py-20 bg-gray-100 dark:bg-gray-900">
-      <h2 className="text-4xl font-extrabold text-center text-gray-800 dark:text-gray-200 mb-16">
+      <h2 className="text-4xl font-extrabold text-center text-gray-800 dark:text-gray-200 mb-12">
         About Me
       </h2>
       <div className="mt-12 max-w-5xl mx-auto text-gray-700 dark:text-gray-400 text-md leading-relaxed p-6 text-center lg:text-left">
