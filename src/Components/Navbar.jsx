@@ -51,22 +51,28 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
             {/* Large Screen Navigation */}
             <div className="hidden lg:flex items-center space-x-8 text-gray-800 dark:text-gray-200">
-                <Link to="/" className="hover:text-green-700">
+                <Link to="/" className="hover:text-green-700 text-sm">
                     Home
                 </Link>
-                <Link to="/mission" className="hover:text-green-700">
+                <Link to="/mission" className="hover:text-green-700 lg:text-sm">
                     Mission
                 </Link>
-                <Link to="/opportunity" className="hover:text-green-700">
+                <Link to="/opportunity" className="hover:text-green-700 lg:text-sm">
                     Opportunity
                 </Link>
-                <Link to="/coverletter" className="hover:text-green-700">
+                <Link to="/coverletter" className="hover:text-green-700 lg:text-sm">
                     Cover Letter
                 </Link>
-                <Link to="/certifications" className="hover:text-green-700">
+                <Link to="/resume" className="hover:text-green-700 lg:text-sm">
+                    Resume
+                </Link>
+                <Link to="/education" className="hover:text-green-700 lg:text-sm">
+                    Education
+                </Link>
+                <Link to="/certifications" className="hover:text-green-700 lg:text-sm">
                     Certifications
                 </Link>
-                <Link to="/references" className="hover:text-green-700">
+                <Link to="/references" className="hover:text-green-700 lg:text-sm">
                     References
                 </Link>
             </div>
@@ -103,6 +109,12 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                             </Link>
                             <Link to="/coverletter" className="hover:text-green-700">
                                 Cover Letter
+                            </Link>
+                            <Link to="/resume" className="hover:text-green-700 lg:text-sm">
+                                Resume
+                            </Link>
+                            <Link to="/education" className="hover:text-green-700 lg:text-sm">
+                                Education
                             </Link>
                             <Link to="/certifications" className="hover:text-green-700">
                                 Certifications
