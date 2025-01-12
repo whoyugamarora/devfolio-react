@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faSun, faMoon, faEnvelope, faCode, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import Mission from "../Pages/Mission";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
@@ -51,7 +50,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             </div>
 
             {/* Large Screen Navigation */}
-            <div className="hidden md:flex items-center space-x-8 text-gray-800 dark:text-gray-200">
+            <div className="hidden lg:flex items-center space-x-8 text-gray-800 dark:text-gray-200">
                 <Link to="/" className="hover:text-green-700">
                     Home
                 </Link>
@@ -60,6 +59,9 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 </Link>
                 <Link to="/opportunity" className="hover:text-green-700">
                     Opportunity
+                </Link>
+                <Link to="/coverletter" className="hover:text-green-700">
+                    Cover Letter
                 </Link>
                 <Link to="/certifications" className="hover:text-green-700">
                     Certifications
@@ -70,7 +72,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             </div>
 
             {/* Theme Toggle */}
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
                 <div
                     onClick={toggleDarkMode}
                     className="cursor-pointer hover:text-yellow-400"
@@ -80,7 +82,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             </div>
 
             {/* Small Screen Dropdown Menu */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
                 <button
                     onClick={toggleMenu}
                     className="text-gray-800 dark:text-gray-200 hover:text-green-700"
@@ -98,6 +100,9 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                             </Link>
                             <Link to="/opportunity" className="hover:text-green-700">
                                 Opportunity
+                            </Link>
+                            <Link to="/coverletter" className="hover:text-green-700">
+                                Cover Letter
                             </Link>
                             <Link to="/certifications" className="hover:text-green-700">
                                 Certifications

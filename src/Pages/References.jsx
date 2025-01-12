@@ -21,21 +21,21 @@ const References = () => {
             title: "Senior Software Engineer",
             company: "Tech Solutions Inc.",
             email: "johndoe@example.com",
-            phone: "(123) 456-7890",
+            relationship: "Ex-manager",
         },
         {
             name: "Jane Smith",
             title: "Project Manager",
             company: "Innovatech",
             email: "janesmith@example.com",
-            phone: "(987) 654-3210",
+            relationship: "Ex-manager",
         },
         {
             name: "Michael Brown",
             title: "IT Consultant",
             company: "CyberSecure Corp.",
             email: "michaelbrown@example.com",
-            phone: "(555) 123-4567",
+            relationship: "Ex-manager",
         },
     ];
 
@@ -71,7 +71,7 @@ const References = () => {
                                 </a>
                             </p>
                             <p className="text-gray-700 dark:text-gray-300 text-sm lg:text-md">
-                                <strong>Phone:</strong> {reference.phone}
+                                <strong>Relationship:</strong> {reference.relationship}
                             </p>
                         </div>
                     ))}

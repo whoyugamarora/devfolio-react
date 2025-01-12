@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./Pages/Home";
 import Mission from "./Pages/Mission";
 import Opportunity from "./Pages/Opportunity";
 import Certifications from "./Pages/Certifications";
 import References from "./Pages/References";
+import CoverLetter from "./Pages/CoverLetter";
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
           <Route path='/opportunity' element={<Opportunity />} />
           <Route path='/certifications' element={<Certifications />} />
           <Route path='/references' element={<References />} />
+          <Route path='/coverletter' element={<CoverLetter />} />
         </Routes>
       </Router>
     </div>
