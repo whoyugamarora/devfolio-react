@@ -47,6 +47,12 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 >
                     <FontAwesomeIcon icon={faEnvelope} className="text-lg" />
                 </a>
+                <a
+                    onClick={toggleDarkMode}
+                    className="cursor-pointer hover:text-yellow-500 lg:hidden"
+                >
+                    <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} className="text-lg" />
+                </a>
             </div>
 
             {/* Large Screen Navigation */}
@@ -96,7 +102,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                     <FontAwesomeIcon icon={isMenuOpen ? faXmark : faBars} className="text-2xl" />
                 </button>
                 {isMenuOpen && (
-                    <div className="absolute left-0 top-16 w-64 bg-gray-100 dark:bg-gray-900 dark:text-gray-100 shadow-md rounded-md z-30">
+                    <div className="absolute left-2 top-16 w-64 bg-gray-100 dark:bg-gray-900 dark:text-gray-100 shadow-xl rounded-xl z-30">
                         <div className="flex flex-col p-4 space-y-4">
                             <Link to='/' className="hover:text-green-700" onClick={toggleMenu}>
                                 Home
@@ -122,13 +128,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                             <Link to="/references" className="hover:text-green-700">
                                 References
                             </Link>
-                            <div
-                                onClick={toggleDarkMode}
-                                className="cursor-pointer hover:text-yellow-500 flex items-center space-x-2"
-                            >
-                                <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} className="text-xl" />
-                                <span>Toggle Theme</span>
-                            </div>
+
                         </div>
                     </div>
                 )}
