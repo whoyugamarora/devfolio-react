@@ -16,7 +16,7 @@ const Mission = () => {
     }, [isDarkMode]);
 
     return (
-        <div>
+        <div className={`transition-colors duration-300 ${isDarkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"}`}>
             <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
             <section id="mission" className="py-16 px-6 bg-gray-100 flex flex-col items-center justify-center dark:bg-gray-800" style={{ minHeight: "calc(100vh - 3.5rem)" }}>
                 <h2 className="text-4xl font-extrabold text-center text-gray-800 dark:text-gray-100 mb-8">

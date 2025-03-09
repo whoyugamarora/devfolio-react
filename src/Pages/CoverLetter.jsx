@@ -16,7 +16,7 @@ const CoverLetter = () => {
     }, [isDarkMode]);
 
     return (
-        <div>
+        <div className={`transition-colors duration-300 ${isDarkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"}`}>
             <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
             <section className="py-16 px-3 bg-gray-100 dark:bg-gray-900 min-h-screen">
                 <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-8">

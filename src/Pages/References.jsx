@@ -40,7 +40,7 @@ const References = () => {
     ];
 
     return (
-        <div>
+        <div className={`transition-colors duration-300 ${isDarkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"}`}>
             <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
             <section className="py-12 bg-gray-100 dark:bg-gray-900" style={{minHeight: "calc(100vh - 3.5rem)"}}>
                 <h2 className="text-4xl font-extrabold text-center text-gray-800 dark:text-white mb-8">

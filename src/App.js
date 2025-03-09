@@ -6,6 +6,8 @@ import Opportunity from "./Pages/Opportunity";
 import Certifications from "./Pages/Certifications";
 import References from "./Pages/References";
 import CoverLetter from "./Pages/CoverLetter";
+import Resume from "./Pages/Resume";
+import Education from "./Pages/Education";
 
 const App = () => {
 
@@ -16,6 +18,8 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/mission' element={<Mission />} />
           <Route path='/opportunity' element={<Opportunity />} />
+          <Route path='/resume' element={<Resume />} />
+          <Route path='/education' element={<Education />} />
           <Route path='/certifications' element={<Certifications />} />
           <Route path='/references' element={<References />} />
           <Route path='/coverletter' element={<CoverLetter />} />

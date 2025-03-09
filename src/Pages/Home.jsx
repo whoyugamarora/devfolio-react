@@ -21,7 +21,7 @@ const Home = () => {
     }, [isDarkMode]);
   
     return (
-      <div className={`min-h-screen ${isDarkMode ? "dark bg-gray-900 text-gray-200" : "bg-gray-100 text-gray-800"}`}>
+      <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? "dark bg-gray-900 text-gray-200" : "bg-gray-100 text-gray-800"}`}>
         <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         <MainSection />
         <AboutSection />
