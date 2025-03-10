@@ -6,7 +6,7 @@ const CoverLetter = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
-    const date = new Date(); 
+    const date = new Date();
 
     useEffect(() => {
         if (isDarkMode) {
@@ -48,7 +48,8 @@ const CoverLetter = () => {
                         <p>
                             I am excited to apply for the <strong>Cybersecurity Analyst I</strong> role at <strong>BCNET</strong>. As a
                             dedicated professional with a strong foundation in cybersecurity and IT systems, I bring not only technical
-                            expertise but also a commitment to safeguarding digital assets in an increasingly interconnected world.
+                            expertise but also a commitment to safeguarding digital assets in an increasingly interconnected world. I am drawn to <strong>BCNET</strong> because of its diverse range of teams, like network and cybersecurity. I believe BCNET demonstrates a forward-thinking approach that aligns perfectly with my passion for innovation and
+                            cybersecurity.
                         </p>
 
                         {/* Key Skills and Achievements */}
@@ -71,19 +72,13 @@ const CoverLetter = () => {
                             My academic journey at the <strong>University of the Fraser Valley</strong> has been equally rewarding. As
                             a consistent recipient of the <strong>Dean's List</strong>, I have demonstrated my dedication to excellence.
                             Courses in cybersecurity, cloud computing, and data analysis have equipped me with the skills necessary to
-                            address the challenges of modern IT landscapes.
-                        </p>
-
-                        {/* Certifications */}
-                        <p>
-                            In addition to my educational background, I have earned certifications such as <strong>Microsoft AZ-900</strong>, <strong>SC-900</strong>, and <strong>Cisco CCNA</strong>, further
+                            address the challenges of modern IT landscapes. In addition to my educational background, I have earned certifications such as <strong>Microsoft AZ-900</strong>, <strong>SC-900</strong>, and <strong>Cisco CCNA</strong>, further
                             solidifying my technical acumen and commitment to continuous learning. These certifications have enabled me to develop expertise in Cloud Computing, making me a strong fit for this position.
                         </p>
 
                         {/* Alignment with the Company */}
                         <p>
-                            I am drawn to <strong>BCNET</strong> because of its diverse range of teams, like network and cybersecurity. I believe BCNET demonstrates a forward-thinking approach that aligns perfectly with my passion for innovation and
-                            cybersecurity.
+
                         </p>
 
                         {/* Soft Skills */}
