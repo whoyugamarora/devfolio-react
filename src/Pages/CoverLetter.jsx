@@ -6,6 +6,7 @@ const CoverLetter = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+    const date = new Date(); 
 
     useEffect(() => {
         if (isDarkMode) {
@@ -26,26 +27,26 @@ const CoverLetter = () => {
                     <div className="text-gray-800 dark:text-gray-300 text-sm space-y-4 leading-relaxed">
                         {/* Recipient Details */}
                         <p>
-                            <strong>Recipient Name</strong>
+                            <strong>Hiring Manager</strong>
                             <br />
-                            [Company Name]
+                            BCNET
                             <br />
-                            [Address Line 1]
+                            555 Seymour St #750
                             <br />
-                            [City, State ZIP]
+                            Vancouver, BC V6B 3H6
                         </p>
 
                         {/* Date */}
                         <p>
-                            <strong>Date:</strong> [Insert Date Here]
+                            <strong>Date:</strong> 9th March, 2025
                         </p>
 
                         {/* Salutation */}
-                        <p>Dear [Recipient's Name or Hiring Manager],</p>
+                        <p>Dear Hiring Manager,</p>
 
                         {/* Opening Paragraph */}
                         <p>
-                            I am excited to apply for the <strong>[Position Name]</strong> role at <strong>[Company Name]</strong>. As a
+                            I am excited to apply for the <strong>Cybersecurity Analyst I</strong> role at <strong>BCNET</strong>. As a
                             dedicated professional with a strong foundation in cybersecurity and IT systems, I bring not only technical
                             expertise but also a commitment to safeguarding digital assets in an increasingly interconnected world.
                         </p>
@@ -75,17 +76,13 @@ const CoverLetter = () => {
 
                         {/* Certifications */}
                         <p>
-                            In addition to my educational background, I have earned certifications such as <strong>[Certification
-                                Name]</strong>, <strong>[Certification Name]</strong>, and <strong>[Certification Name]</strong>, further
-                            solidifying my technical acumen and commitment to continuous learning. These certifications have enabled me
-                            to develop expertise in [Key Areas], making me a strong fit for this position.
+                            In addition to my educational background, I have earned certifications such as <strong>Microsoft AZ-900</strong>, <strong>SC-900</strong>, and <strong>Cisco CCNA</strong>, further
+                            solidifying my technical acumen and commitment to continuous learning. These certifications have enabled me to develop expertise in Cloud Computing, making me a strong fit for this position.
                         </p>
 
                         {/* Alignment with the Company */}
                         <p>
-                            I am particularly drawn to <strong>[Company Name]</strong> because of its commitment to <strong>[Specific
-                                Company Value or Mission]</strong>. Your recent project, <strong>[Mention a Project or Initiative]</strong>,
-                            demonstrates a forward-thinking approach that aligns perfectly with my passion for innovation and
+                            I am drawn to <strong>BCNET</strong> because of its diverse range of teams, like network and cybersecurity. I believe BCNET demonstrates a forward-thinking approach that aligns perfectly with my passion for innovation and
                             cybersecurity.
                         </p>
 
@@ -99,7 +96,7 @@ const CoverLetter = () => {
 
                         {/* Closing Paragraph */}
                         <p>
-                            I am eager to bring my skills, enthusiasm, and commitment to <strong>[Company Name]</strong>. I am confident
+                            I am eager to bring my skills, enthusiasm, and commitment to <strong>BCNET</strong>. I am confident
                             that my blend of technical expertise and passion for cybersecurity will enable me to contribute meaningfully
                             to your organization’s goals.
                         </p>
@@ -107,11 +104,9 @@ const CoverLetter = () => {
                         {/* Call to Action */}
                         <p>
                             I would welcome the opportunity to discuss how my background aligns with the requirements of the
-                            <strong> [Position Name]</strong> role. Thank you for considering my application, and I look forward to the
-                            possibility of contributing to your team. Please feel free to contact me at <strong>[Your Phone
-                                Number]</strong> or <strong>[Your Email Address]</strong> at your convenience.
+                            <strong> Cybersecurity Analyst</strong> role. Thank you for considering my application, and I look forward to the
+                            possibility of contributing to your team. Please feel free to contact me at <strong>arorayugam115@yahoo.com</strong> at your convenience.
                         </p>
-
                         {/* Signature */}
                         <p>
                             Sincerely,

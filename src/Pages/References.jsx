@@ -17,25 +17,25 @@ const References = () => {
 
     const references = [
         {
-            name: "John Doe",
-            title: "Senior Software Engineer",
-            company: "Tech Solutions Inc.",
-            email: "johndoe@example.com",
-            relationship: "Ex-manager",
+            name: "Kevin Renso",
+            title: "Instructor, School of Computing ",
+            company: "University of The Fraser Valley",
+            email: "kevin.renso@ufv.ca",
+            relationship: "Professor",
         },
         {
-            name: "Jane Smith",
-            title: "Project Manager",
-            company: "Innovatech",
-            email: "janesmith@example.com",
-            relationship: "Ex-manager",
+            name: "Talia Q",
+            title: "Associate Professor, School of Computing",
+            company: "University of The Fraser Valley",
+            email: "talia.q@ufv.ca",
+            relationship: "Professor",
         },
         {
-            name: "Michael Brown",
-            title: "IT Consultant",
-            company: "CyberSecure Corp.",
-            email: "michaelbrown@example.com",
-            relationship: "Ex-manager",
+            name: "Anthonese Mitchell",
+            title: "Senior IT Administrator",
+            company: "Carbon Engineering ULC",
+            email: "anthonesem@carbonengineering.com",
+            relationship: "Team Lead",
         },
     ];
 
@@ -59,7 +59,7 @@ const References = () => {
                                 <strong>Title:</strong> {reference.title}
                             </p>
                             <p className="text-gray-700 dark:text-gray-300 mb-1 text-sm lg:text-md">
-                                <strong>Company:</strong> {reference.company}
+                                <strong>Location:</strong> {reference.company}
                             </p>
                             <p className="text-gray-700 dark:text-gray-300 mb-1 text-sm lg:text-md">
                                 <strong>Email:</strong>{" "}
