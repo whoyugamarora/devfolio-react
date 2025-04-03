@@ -63,12 +63,14 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 <Link to="/mission" className="hover:text-green-700 lg:text-sm">
                     Mission
                 </Link>
+                {/*
                 <Link to="/opportunity" className="hover:text-green-700 lg:text-sm">
                     Opportunity
                 </Link>
                 <Link to="/coverletter" className="hover:text-green-700 lg:text-sm">
                     Cover Letter
                 </Link>
+                */}
                 <Link to="/resume" className="hover:text-green-700 lg:text-sm">
                     Resume
                 </Link>
@@ -78,9 +80,11 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 <Link to="/certifications" className="hover:text-green-700 lg:text-sm">
                     Certifications
                 </Link>
+                {/*
                 <Link to="/references" className="hover:text-green-700 lg:text-sm">
                     References
                 </Link>
+                */}
             </div>
 
             {/* Theme Toggle */}
@@ -110,12 +114,15 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                             <Link to="/mission" className="hover:text-green-700" onClick={toggleMenu}>
                                 Mission
                             </Link>
+                            {/*
                             <Link to="/opportunity" className="hover:text-green-700">
                                 Opportunity
                             </Link>
+                            
                             <Link to="/coverletter" className="hover:text-green-700">
                                 Cover Letter
                             </Link>
+                            */}
                             <Link to="/resume" className="hover:text-green-700 lg:text-sm">
                                 Resume
                             </Link>
@@ -125,10 +132,11 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                             <Link to="/certifications" className="hover:text-green-700">
                                 Certifications
                             </Link>
+                            {/*
                             <Link to="/references" className="hover:text-green-700">
                                 References
                             </Link>
-
+                            */}
                         </div>
                     </div>
                 )}
