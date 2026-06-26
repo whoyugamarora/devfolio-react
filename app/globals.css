@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #06060c;
+  --text: #efefef;
+  --muted: #424242;
+  --border: rgba(255,255,255,0.08);
+  --surface: rgba(255,255,255,0.03);
+  --accent: #c8ff3b;
+  --accent2: #60efff;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: rgba(200,255,59,0.18) transparent; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(200,255,59,0.18); border-radius: 2px; }
+::selection { background: rgba(200,255,59,0.2); color: #06060c; }
+
+/* ── Utilities ── */
+@layer utilities {
+  .font-display { font-family: 'Big Shoulders Display', system-ui, sans-serif; }
+  .font-body { font-family: 'Space Grotesk', system-ui, sans-serif; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: border-color 0.22s ease, background 0.22s ease;
+  }
+  .card:hover { border-color: rgba(255,255,255,0.15); }
+
+  .pill {
+    display: inline-flex; align-items: center;
+    padding: 3px 11px; border-radius: 999px;
+    border: 1px solid var(--border); color: var(--muted);
+    font-size: 11px; font-weight: 500; white-space: nowrap;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .pill:hover { border-color: rgba(200,255,59,0.3); color: var(--text); }
+
+  .section-num {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.12);
+  }
+  .text-outline-accent {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200,255,59,0.3);
+  }
+}
+
+/* ── Marquee ── */
+.marquee-track {
+  display: flex; width: max-content;
+  animation: marqueeScroll 30s linear infinite;
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Blob animations (background depth) ── */
+@keyframes blobDrift1 {
+  0%,100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(6%, -10%) scale(1.09); }
+  66%      { transform: translate(-5%, 7%) scale(0.94); }
+}
+@keyframes blobDrift2 {
+  0%,100% { transform: translate(0, 0) scale(1); }
+  40%      { transform: translate(-7%, 9%) scale(1.06); }
+  75%      { transform: translate(5%, -6%) scale(0.96); }
+}
+
+/* ── Letter clip reveal ── */
+.clip-overflow { overflow: hidden; display: inline-block; }
+
+/* ── Thin horizontal rule ── */
+.rule { border: none; border-top: 1px solid var(--border); }
