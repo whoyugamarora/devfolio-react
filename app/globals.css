@@ -15,7 +15,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: rgba(200,255,59,0.18) transparent; }
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: rgba(200,255,59,0.18) transparent; overflow-x: hidden; }
 
 body {
   background: var(--bg);

@@ -1,19 +1,21 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
-import { credlyBadges, deansList } from '@/lib/data'
+import { certifications, deansList } from '@/lib/data'
+
+const colorMap: Record<string, { color: string; glow: string }> = {
+  indigo:  { color: '#818cf8', glow: 'rgba(129,140,248,0.08)' },
+  cyan:    { color: '#67e8f9', glow: 'rgba(103,232,249,0.08)' },
+  violet:  { color: '#c084fc', glow: 'rgba(192,132,252,0.08)' },
+  emerald: { color: '#6ee7b7', glow: 'rgba(110,231,183,0.08)' },
+  amber:   { color: '#fbbf24', glow: 'rgba(251,191,36,0.08)'  },
+}
 
 export default function CertificationsSection() {
   const ref = useRef<HTMLDivElement>(null)
   const show = useInView(ref, { once: true, margin: '-80px' })
-
-  useEffect(() => {
-    if (document.getElementById('credly-script')) return
-    const s = document.createElement('script')
-    s.id = 'credly-script'; s.src = 'https://cdn.credly.com/assets/utilities/embed.js'; s.async = true
-    document.body.appendChild(s)
-  }, [])
+  const preview = certifications.slice(0, 8)
 
   return (
     <section id="certifications" ref={ref} className="py-28 px-6 border-t border-[rgba(255,255,255,0.06)]">
@@ -32,45 +34,63 @@ export default function CertificationsSection() {
               Certifications
             </motion.h2>
             <motion.div initial={{ opacity: 0 }} animate={show ? { opacity: 1 } : {}} transition={{ delay: 0.2 }}>
-              <Link href="/certifications" className="text-sm text-[#2a2a2a] hover:text-accent transition-colors pb-2">
+              <Link href="/certifications" className="text-sm text-[#555] hover:text-accent transition-colors pb-2">
                 View all →
               </Link>
             </motion.div>
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={show ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.12 }}
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 mb-8"
-        >
-          {credlyBadges.slice(0, 8).map((id, i) => (
-            <motion.div key={id}
-              initial={{ opacity: 0, scale: 0.88 }} animate={show ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.3, delay: 0.15 + i * 0.05 }}
-              className="card aspect-square flex items-center justify-center p-2 hover:border-accent/30 transition-all">
-              <div data-iframe-width="120" data-iframe-height="270"
-                data-share-badge-id={id} data-share-badge-host="https://www.credly.com" />
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Cert cards grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-8">
+          {preview.map((cert, i) => {
+            const cs = colorMap[cert.color]
+            return (
+              <motion.a
+                key={cert.badgeId}
+                href={`https://www.credly.com/badges/${cert.badgeId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 14 }}
+                animate={show ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.38, delay: 0.1 + i * 0.05 }}
+                className="group relative rounded-xl border border-[rgba(255,255,255,0.07)] p-4 overflow-hidden transition-all duration-300 hover:border-[rgba(255,255,255,0.14)] cursor-pointer"
+                style={{ background: 'rgba(255,255,255,0.018)' }}
+              >
+                {/* Top accent */}
+                <div className="absolute top-0 inset-x-0 h-[2px] transition-opacity duration-300 group-hover:opacity-100"
+                  style={{ background: cs.color, opacity: 0.3 }} />
 
+                <p className="text-[#efefef] font-semibold text-[13px] leading-snug mb-3 pr-2">
+                  {cert.name}
+                </p>
+                <div className="flex items-center justify-between">
+                  <p className="text-[11px] font-medium" style={{ color: cs.color }}>{cert.issuer}</p>
+                  <p className="text-[10px] text-[#444]">{cert.date}</p>
+                </div>
+              </motion.a>
+            )
+          })}
+        </div>
+
+        {/* Dean's List card */}
         <motion.div
           initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.38 }}
+          transition={{ duration: 0.5, delay: 0.48 }}
           className="card p-6" style={{ borderLeftWidth: 2, borderLeftColor: '#c8ff3b' }}
         >
           <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-accent mb-2">Academic Excellence</p>
           <p className="font-display font-bold text-lg text-[#efefef] mb-1">
             Dean&apos;s List — University of the Fraser Valley
           </p>
-          <p className="text-[#2a2a2a] text-sm mb-4">Six consecutive recognitions for academic excellence</p>
+          <p className="text-[#777] text-sm mb-4">Six consecutive recognitions for academic excellence</p>
           <div className="flex flex-wrap gap-2">
             {deansList.map(e => e.semesters.map(s => (
               <span key={`${e.year}-${s}`} className="pill">{s} {e.year}</span>
             )))}
           </div>
         </motion.div>
+
       </div>
     </section>
   )

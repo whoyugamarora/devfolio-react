@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 
 const links = [
@@ -29,6 +29,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
   return (
     <>
       <motion.header
@@ -40,7 +46,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-[52px] flex items-center justify-between">
-          <Link href="/" className="font-display font-bold text-sm tracking-[0.18em] text-[#efefef] hover:text-accent transition-colors">
+          <Link href="/" className="font-display font-bold text-sm tracking-[0.18em] text-[#efefef] hover:text-accent transition-colors z-50 relative">
             YA
           </Link>
 
@@ -48,9 +54,7 @@ export default function Navbar() {
             {links.map(({ label, href }) => {
               const isActive = active === href.slice(1)
               return (
-                <a
-                  key={href}
-                  href={href}
+                <a key={href} href={href}
                   className={`text-[13px] font-medium transition-colors duration-150 relative group ${
                     isActive ? 'text-accent' : 'text-[#555] hover:text-[#efefef]'
                   }`}
@@ -63,37 +67,95 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/resume"
-              className="hidden md:inline-flex items-center gap-1.5 text-[12px] font-semibold px-3.5 py-1.5 rounded-md bg-accent text-[#0a0a0a] hover:opacity-88 transition-all"
-            >
+            <Link href="/resume"
+              className="hidden md:inline-flex items-center gap-1.5 text-[12px] font-semibold px-3.5 py-1.5 rounded-md bg-accent text-[#0a0a0a] hover:opacity-88 transition-all">
               Resume ↗
             </Link>
-            <button className="md:hidden p-1 text-[#555] hover:text-[#efefef]" onClick={() => setOpen(!open)}>
+
+            {/* Hamburger — sits above overlay */}
+            <button
+              className="md:hidden p-1 text-[#555] hover:text-[#efefef] relative z-50"
+              onClick={() => setOpen(!open)}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+            >
               <div className="w-5 flex flex-col gap-[5px]">
-                <span className={`h-[1px] bg-current transition-all ${open ? 'rotate-45 translate-y-[6px]' : ''}`} />
-                <span className={`h-[1px] bg-current transition-all ${open ? 'opacity-0' : ''}`} />
-                <span className={`h-[1px] bg-current transition-all ${open ? '-rotate-45 -translate-y-[6px]' : ''}`} />
+                <span className={`h-[1px] bg-current transition-all duration-300 ${open ? 'rotate-45 translate-y-[6px]' : ''}`} />
+                <span className={`h-[1px] bg-current transition-all duration-300 ${open ? 'opacity-0 scale-x-0' : ''}`} />
+                <span className={`h-[1px] bg-current transition-all duration-300 ${open ? '-rotate-45 -translate-y-[6px]' : ''}`} />
               </div>
             </button>
           </div>
         </div>
       </motion.header>
 
-      {open && (
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="fixed inset-x-0 top-[52px] z-40 bg-[#0a0a0a] border-b border-[rgba(255,255,255,0.07)] px-6 py-4"
-        >
-          {links.map(({ label, href }) => (
-            <a key={href} href={href} className="block py-2.5 text-sm text-[#555] hover:text-[#efefef] transition-colors" onClick={() => setOpen(false)}>
-              {label}
-            </a>
-          ))}
-          <Link href="/resume" className="block py-2.5 text-sm text-accent mt-1 border-t border-[rgba(255,255,255,0.07)] pt-3" onClick={() => setOpen(false)}>Resume →</Link>
-        </motion.div>
-      )}
+      {/* Full-screen mobile overlay */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 md:hidden flex flex-col bg-[#06060c]/97 backdrop-blur-md"
+          >
+            {/* "YA" watermark */}
+            <div aria-hidden="true"
+              className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+              <p className="font-display font-black leading-none text-white/[0.022]"
+                style={{ fontSize: 'clamp(160px, 48vw, 320px)' }}>
+                YA
+              </p>
+            </div>
+
+            {/* Nav links */}
+            <nav className="flex-1 flex flex-col justify-center px-8 relative z-10 pt-[52px]">
+              {links.map(({ label, href }, i) => (
+                <motion.a
+                  key={href}
+                  href={href}
+                  initial={{ opacity: 0, x: -24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -16 }}
+                  transition={{ duration: 0.22, delay: i * 0.06 }}
+                  onClick={() => setOpen(false)}
+                  className={`font-display font-black leading-none py-3 transition-colors duration-150 ${
+                    active === href.slice(1) ? 'text-accent' : 'text-[#efefef] hover:text-accent'
+                  }`}
+                  style={{ fontSize: 'clamp(38px, 9vw, 58px)' }}
+                >
+                  {label}
+                </motion.a>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -16 }}
+                transition={{ duration: 0.22, delay: links.length * 0.06 }}
+              >
+                <Link href="/resume" onClick={() => setOpen(false)}
+                  className="font-display font-black leading-none py-3 text-accent hover:opacity-75 transition-opacity inline-block"
+                  style={{ fontSize: 'clamp(38px, 9vw, 58px)' }}
+                >
+                  Resume ↗
+                </Link>
+              </motion.div>
+            </nav>
+
+            {/* Bottom strip */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, delay: 0.35 }}
+              className="relative z-10 border-t border-[rgba(255,255,255,0.06)] px-8 py-6 flex items-center justify-between"
+            >
+              <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#444]">Yugam Arora</p>
+              <span className="w-1 h-1 rounded-full bg-accent/50" />
+              <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#444]">Fraser Valley, BC</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }

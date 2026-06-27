@@ -77,7 +77,7 @@ export default function Footer() {
               { Icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Email', ext: false },
             ].map(({ Icon, href, label, ext }) => (
               <MagLink key={label} href={href} external={ext}
-                className="p-2.5 rounded-xl border border-[rgba(255,255,255,0.07)] text-[#333] hover:text-[#efefef] hover:border-accent/40 transition-all">
+                className="p-2.5 rounded-xl border border-[rgba(255,255,255,0.07)] text-[#555] hover:text-[#efefef] hover:border-accent/40 transition-all">
                 <Icon className="w-4 h-4" />
               </MagLink>
             ))}
@@ -87,7 +87,7 @@ export default function Footer() {
         <motion.div
           initial={{ opacity: 0 }} animate={show ? { opacity: 1 } : {}}
           transition={{ delay: 0.5 }}
-          className="flex items-center justify-between text-[#1e1e1e] text-xs">
+          className="flex items-center justify-between text-[#444] text-xs">
           <p>© {new Date().getFullYear()} {personalInfo.name}</p>
           <p>Built with Next.js &amp; Tailwind CSS</p>
         </motion.div>

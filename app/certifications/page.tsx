@@ -1,100 +1,124 @@
 'use client'
-
-import { useEffect } from 'react'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Award, Star } from 'lucide-react'
-import { credlyBadges, deansList } from '@/lib/data'
+import { ArrowLeft } from 'lucide-react'
+import { certifications, deansList } from '@/lib/data'
 
-declare global {
-  interface Window {
-    __credlyLoaded?: boolean
-  }
+const colorMap: Record<string, { color: string; glow: string; bg: string }> = {
+  indigo:  { color: '#818cf8', glow: 'rgba(129,140,248,0.10)', bg: 'rgba(129,140,248,0.04)' },
+  cyan:    { color: '#67e8f9', glow: 'rgba(103,232,249,0.08)', bg: 'rgba(103,232,249,0.04)' },
+  violet:  { color: '#c084fc', glow: 'rgba(192,132,252,0.08)', bg: 'rgba(192,132,252,0.04)' },
+  emerald: { color: '#6ee7b7', glow: 'rgba(110,231,183,0.08)', bg: 'rgba(110,231,183,0.04)' },
+  amber:   { color: '#fbbf24', glow: 'rgba(251,191,36,0.08)',  bg: 'rgba(251,191,36,0.04)'  },
 }
 
 export default function CertificationsPage() {
-  useEffect(() => {
-    if (window.__credlyLoaded) return
-    const script = document.createElement('script')
-    script.src = 'https://cdn.credly.com/assets/utilities/embed.js'
-    script.async = true
-    script.onload = () => { window.__credlyLoaded = true }
-    document.body.appendChild(script)
-  }, [])
+  const ref = useRef<HTMLDivElement>(null)
+  const show = useInView(ref, { once: true, margin: '-40px' })
 
   return (
-    <main className="relative min-h-screen bg-[#050515] text-slate-100 px-4 py-8">
-      {/* Background */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-[-150px] left-[-100px] w-[500px] h-[500px] rounded-full bg-violet-600/18 blur-[100px]" />
-        <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] rounded-full bg-indigo-600/12 blur-[100px]" />
+    <main className="relative min-h-screen bg-[#06060c] text-[#efefef] px-6 py-12">
+
+      {/* Reuse aurora blobs */}
+      <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
+        <div style={{ position:'absolute', borderRadius:'50%', filter:'blur(140px)', width:800, height:800, top:-250, left:-250, background:'radial-gradient(circle, rgba(120,60,220,0.1), transparent 70%)' }} />
+        <div style={{ position:'absolute', borderRadius:'50%', filter:'blur(120px)', width:600, height:600, bottom:-150, right:-100, background:'radial-gradient(circle, rgba(200,255,59,0.06), transparent 70%)' }} />
       </div>
 
-      <div className="relative max-w-6xl mx-auto">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 transition-colors glass px-4 py-2 rounded-xl mb-12"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Portfolio
-        </Link>
+      <div className="relative z-10 max-w-7xl mx-auto" ref={ref}>
 
-        <div className="mb-12">
-          <p className="section-label mb-4">Certifications</p>
-          <h1 className="text-5xl md:text-6xl font-extrabold text-slate-100 leading-tight mb-4">
-            All <span className="text-gradient">credentials.</span>
-          </h1>
-          <p className="text-slate-400 text-lg">
-            {credlyBadges.length} professional certifications verified by Credly.
-          </p>
+        {/* Back */}
+        <motion.div initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
+          <Link href="/" className="inline-flex items-center gap-2 text-[#555] hover:text-[#efefef] transition-colors text-sm mb-14 group">
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
+            Back to Portfolio
+          </Link>
+        </motion.div>
+
+        {/* Header */}
+        <div className="mb-16">
+          <motion.p initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}
+            className="section-num mb-4">Credentials</motion.p>
+          <div className="overflow-hidden">
+            <motion.h1
+              initial={{ y: '100%' }} animate={{ y: '0%' }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              className="font-display font-black tracking-[-0.04em] leading-none text-[#efefef]"
+              style={{ fontSize: 'clamp(48px, 9vw, 110px)' }}
+            >
+              All credentials.
+            </motion.h1>
+          </div>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+            className="text-[#555] mt-4 text-sm">
+            {certifications.length} professional certifications · verified on Credly
+          </motion.p>
+        </div>
+
+        {/* Cert grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
+          {certifications.map((cert, i) => {
+            const cs = colorMap[cert.color]
+            return (
+              <motion.a
+                key={cert.badgeId}
+                href={`https://www.credly.com/badges/${cert.badgeId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 18 }}
+                animate={show ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.45, delay: i * 0.04 }}
+                className="group relative rounded-2xl border border-[rgba(255,255,255,0.07)] p-6 overflow-hidden transition-all duration-300 cursor-pointer"
+                style={{ background: 'rgba(255,255,255,0.018)' }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = cs.color + '44'
+                  ;(e.currentTarget as HTMLElement).style.background = cs.bg
+                  ;(e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px ${cs.glow}`
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = ''
+                  ;(e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.018)'
+                  ;(e.currentTarget as HTMLElement).style.boxShadow = ''
+                }}
+              >
+                {/* Top accent */}
+                <div className="absolute top-0 inset-x-0 h-[2px] transition-opacity duration-300 opacity-25 group-hover:opacity-100"
+                  style={{ background: cs.color }} />
+
+                {/* Index watermark */}
+                <div className="absolute bottom-3 right-4 font-display font-black leading-none select-none"
+                  style={{ fontSize: '64px', color: cs.color, opacity: 0.04 }}>
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+
+                <p className="text-[#efefef] font-semibold text-[15px] leading-snug mb-4 pr-8">{cert.name}</p>
+                <div className="flex items-center justify-between">
+                  <p className="text-[12px] font-semibold" style={{ color: cs.color }}>{cert.issuer}</p>
+                  <p className="text-[11px] text-[#555]">{cert.date}</p>
+                </div>
+              </motion.a>
+            )
+          })}
         </div>
 
         {/* Dean's List */}
-        <div className="glass rounded-3xl p-7 mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-2xl bg-amber-500/12 border border-amber-500/20 flex items-center justify-center">
-              <Star className="w-5 h-5 text-amber-400 fill-amber-400/30" />
-            </div>
-            <div>
-              <p className="font-bold text-slate-100">Dean&apos;s List — University of the Fraser Valley</p>
-              <p className="text-xs text-slate-500 mt-0.5">Academic Excellence</p>
-            </div>
-          </div>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="rounded-2xl border border-[rgba(200,255,59,0.2)] p-8"
+          style={{ borderLeftWidth: 3, borderLeftColor: '#c8ff3b', background: 'rgba(200,255,59,0.025)' }}
+        >
+          <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-accent mb-3">Academic Excellence</p>
+          <p className="font-display font-bold text-2xl text-[#efefef] mb-1">Dean&apos;s List</p>
+          <p className="text-[#888] text-sm mb-6">University of the Fraser Valley · Six consecutive semesters</p>
           <div className="flex flex-wrap gap-2">
-            {deansList.map((entry) =>
-              entry.semesters.map((sem) => (
-                <span
-                  key={`${sem}-${entry.year}`}
-                  className="text-sm px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 font-medium"
-                >
-                  {sem} {entry.year}
-                </span>
-              ))
-            )}
+            {deansList.map(e => e.semesters.map(s => (
+              <span key={`${e.year}-${s}`} className="pill">{s} {e.year}</span>
+            )))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Credly Badges */}
-        <div className="flex items-center gap-3 mb-6">
-          <Award className="w-5 h-5 text-indigo-400" />
-          <p className="text-slate-200 font-semibold">Professional Certifications</p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {credlyBadges.map((id) => (
-            <div
-              key={id}
-              className="glass glass-hover rounded-2xl p-4 flex items-center justify-center min-h-[180px] overflow-hidden"
-            >
-              <div
-                data-iframe-width="240"
-                data-iframe-height="160"
-                data-share-badge-id={id}
-                data-share-badge-host="https://www.credly.com"
-                className="w-full"
-              />
-            </div>
-          ))}
-        </div>
       </div>
     </main>
   )

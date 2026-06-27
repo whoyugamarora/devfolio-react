@@ -73,7 +73,7 @@ export default function Projects() {
           {/* Project list */}
           <div className="relative">
             {/* Large decorative number */}
-            <div className="absolute -right-4 -top-12 font-display font-black text-outline select-none pointer-events-none"
+            <div className="hidden sm:block absolute -right-4 -top-12 font-display font-black text-outline select-none pointer-events-none"
               style={{ fontSize: 'clamp(80px,14vw,160px)' }}>
               {String(projects.length).padStart(2, '0')}
             </div>
@@ -99,7 +99,7 @@ export default function Projects() {
                       <h3 className="font-display font-bold text-[22px] text-[#666] group-hover:text-[#efefef] transition-colors duration-200 mb-2 leading-tight">
                         {p.title}
                       </h3>
-                      <p className="text-[#333] text-sm leading-relaxed mb-3 max-w-sm">{p.description}</p>
+                      <p className="text-[#777] text-sm leading-relaxed mb-3 max-w-sm">{p.description}</p>
                       <div className="flex flex-wrap gap-1.5">
                         {p.tech.map(t => <span key={t} className="pill">{t}</span>)}
                       </div>

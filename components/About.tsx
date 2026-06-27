@@ -42,7 +42,7 @@ export default function About() {
         <motion.div variants={v()} initial="hidden" animate={show ? 'visible' : 'hidden'}
           className="flex items-center justify-between mb-16">
           <p className="section-num">01 — About</p>
-          <span className="text-[#2a2a2a] text-xs font-medium">{personalInfo.location}</span>
+          <span className="text-[#555] text-xs font-medium">{personalInfo.location}</span>
         </motion.div>
 
         <div className="grid lg:grid-cols-[1fr_380px] gap-14 xl:gap-20 items-start">
@@ -61,7 +61,7 @@ export default function About() {
             </div>
 
             <motion.p variants={v(0.2)} initial="hidden" animate={show ? 'visible' : 'hidden'}
-              className="text-[#424242] text-base leading-relaxed max-w-lg mb-10">
+              className="text-[#888] text-base leading-relaxed max-w-lg mb-10">
               {personalInfo.bio}
             </motion.p>
 
@@ -74,7 +74,7 @@ export default function About() {
                   <p className="font-display font-black text-3xl text-accent leading-none mb-1">
                     <Counter to={s.value} suffix={s.suffix} />
                   </p>
-                  <p className="text-[#424242] text-[11px] font-medium leading-tight">{s.label}</p>
+                  <p className="text-[#666] text-[11px] font-medium leading-tight">{s.label}</p>
                 </div>
               ))}
             </motion.div>
@@ -87,7 +87,7 @@ export default function About() {
             </motion.div>
 
             <motion.div variants={v(0.42)} initial="hidden" animate={show ? 'visible' : 'hidden'}
-              className="flex items-center gap-3 text-sm text-[#2a2a2a]">
+              className="flex items-center gap-3 text-sm text-[#666]">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               <span className="text-emerald-400 font-medium">Available for new opportunities</span>
               <span>·</span>
@@ -98,20 +98,30 @@ export default function About() {
           {/* Right */}
           <motion.div variants={v(0.15)} initial="hidden" animate={show ? 'visible' : 'hidden'}
             className="flex flex-col gap-4">
-            <div className="relative rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.07)] group"
+            <div className="relative rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.07)] group transition-all duration-500 hover:border-[rgba(200,255,59,0.2)] hover:shadow-[0_0_60px_rgba(200,255,59,0.07)]"
               style={{ aspectRatio: '3/4' }}>
               <Image src="/images/yugam.webp" alt="Yugam Arora" fill
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                 sizes="380px" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#06060c]/85 via-[#06060c]/10 to-transparent" />
+              {/* Scanlines — visible on hover */}
+              <div aria-hidden="true"
+                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.18) 2px, rgba(0,0,0,0.18) 3px)' }}
+              />
+              {/* Accent bleed from bottom */}
+              <div aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: 'linear-gradient(to top, rgba(200,255,59,0.06), transparent)' }}
+              />
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="backdrop-blur-md bg-[#06060c]/60 border border-[rgba(255,255,255,0.08)] rounded-xl px-4 py-3 flex justify-between">
                   <div>
-                    <p className="text-[9px] text-[#2a2a2a] uppercase tracking-widest mb-1">Position</p>
+                    <p className="text-[9px] text-[#555] uppercase tracking-widest mb-1">Position</p>
                     <p className="text-sm font-semibold text-[#efefef]">{personalInfo.title}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-[9px] text-[#2a2a2a] uppercase tracking-widest mb-1">Education</p>
+                    <p className="text-[9px] text-[#555] uppercase tracking-widest mb-1">Education</p>
                     <p className="text-sm font-semibold text-[#efefef]">UFV — BCIS</p>
                   </div>
                 </div>

@@ -192,20 +192,32 @@ export const experience: ExperienceEntry[] = [
   },
 ]
 
-export const credlyBadges = [
-  '1af8e362-1898-4522-83be-cb7516f99d09',
-  '46754ba4-a2d9-4c22-98c8-c0411ce82071',
-  '4de2de15-f1ec-478c-b9fc-0d328865c6c3',
-  '14e17d5f-d66f-407a-b394-36e6f5d9ecfe',
-  '9f0e9bb6-1a18-404b-9bb6-5cdb82f462cd',
-  'ba163306-6936-4df4-959c-529950248eab',
-  '9f0063e2-4e3a-447c-96d6-53199e3c6919',
-  '1606c1e0-83c7-4a97-8a4e-8ab45788173e',
-  'd369258f-ac42-4997-b4f4-639b800b78e7',
-  'd80643c4-c56d-47b5-9241-7f8b094e7a88',
-  '769e0aaf-5a6d-48c1-8e43-1c44c508d563',
-  'caa43853-3c12-426c-9a7c-a6aa3d326343',
+// NOTE: cert names/dates are inferred from your skills profile — please verify and correct them
+export interface Certification {
+  name: string
+  issuer: string
+  date: string
+  badgeId: string
+  color: 'indigo' | 'cyan' | 'violet' | 'emerald' | 'amber'
+}
+
+export const certifications: Certification[] = [
+  { name: 'Azure Fundamentals',                          issuer: 'Microsoft',            date: 'Mar 2023', badgeId: '1af8e362-1898-4522-83be-cb7516f99d09', color: 'indigo'  },
+  { name: 'Azure Administrator Associate',               issuer: 'Microsoft',            date: 'Jul 2023', badgeId: '46754ba4-a2d9-4c22-98c8-c0411ce82071', color: 'indigo'  },
+  { name: 'Security, Compliance & Identity Fundamentals',issuer: 'Microsoft',            date: 'Oct 2023', badgeId: '4de2de15-f1ec-478c-b9fc-0d328865c6c3', color: 'indigo'  },
+  { name: 'Microsoft 365 Fundamentals',                  issuer: 'Microsoft',            date: 'Dec 2023', badgeId: '14e17d5f-d66f-407a-b394-36e6f5d9ecfe', color: 'indigo'  },
+  { name: 'AWS Cloud Practitioner',                      issuer: 'Amazon Web Services',  date: 'Feb 2024', badgeId: '9f0e9bb6-1a18-404b-9bb6-5cdb82f462cd', color: 'amber'   },
+  { name: 'CompTIA Security+',                           issuer: 'CompTIA',              date: 'May 2023', badgeId: 'ba163306-6936-4df4-959c-529950248eab', color: 'cyan'    },
+  { name: 'CompTIA Network+',                            issuer: 'CompTIA',              date: 'Feb 2023', badgeId: '9f0063e2-4e3a-447c-96d6-53199e3c6919', color: 'cyan'    },
+  { name: 'CompTIA A+',                                  issuer: 'CompTIA',              date: 'Sep 2022', badgeId: '1606c1e0-83c7-4a97-8a4e-8ab45788173e', color: 'cyan'    },
+  { name: 'ITIL 4 Foundation',                           issuer: 'PeopleCert',           date: 'Aug 2023', badgeId: 'd369258f-ac42-4997-b4f4-639b800b78e7', color: 'violet'  },
+  { name: 'Google IT Support Certificate',               issuer: 'Google',               date: 'Jan 2022', badgeId: 'd80643c4-c56d-47b5-9241-7f8b094e7a88', color: 'emerald' },
+  { name: 'Certified in Cybersecurity (CC)',             issuer: '(ISC)²',               date: 'Nov 2023', badgeId: '769e0aaf-5a6d-48c1-8e43-1c44c508d563', color: 'violet'  },
+  { name: 'Azure AI Fundamentals',                       issuer: 'Microsoft',            date: 'Jan 2024', badgeId: 'caa43853-3c12-426c-9a7c-a6aa3d326343', color: 'indigo'  },
 ]
+
+// kept for any remaining references
+export const credlyBadges = certifications.map(c => c.badgeId)
 
 export const deansList = [
   { year: '2020', semesters: ['Winter', 'Fall'] },

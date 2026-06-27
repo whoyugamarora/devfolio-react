@@ -29,7 +29,7 @@ function Entry({ e, i, show }: { e: ExperienceEntry; i: number; show: boolean })
             <p className="font-display font-bold text-xl text-[#666] group-hover:text-[#efefef] transition-colors duration-200 mb-0.5">
               {e.role}
             </p>
-            <div className="flex items-center gap-2 text-[#2a2a2a] text-xs">
+            <div className="flex items-center gap-2 text-[#555] text-xs">
               <span>{e.company}</span>
               <span>·</span>
               <span>{e.duration}</span>
@@ -43,7 +43,7 @@ function Entry({ e, i, show }: { e: ExperienceEntry; i: number; show: boolean })
           <motion.div
             animate={{ rotate: open ? 45 : 0 }}
             transition={{ duration: 0.22 }}
-            className="w-7 h-7 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center text-[#333] group-hover:text-[#efefef] group-hover:border-accent/50 transition-all"
+            className="w-7 h-7 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center text-[#555] group-hover:text-[#efefef] group-hover:border-accent/50 transition-all"
           >
             <span className="text-base leading-none">+</span>
           </motion.div>
@@ -67,7 +67,7 @@ function Entry({ e, i, show }: { e: ExperienceEntry; i: number; show: boolean })
                       key={bi}
                       initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: bi * 0.06 }}
-                      className="flex gap-3 text-[#424242] text-sm leading-relaxed"
+                      className="flex gap-3 text-[#888] text-sm leading-relaxed"
                     >
                       <span className="mt-[8px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: c + '80' }} />
                       {b}
