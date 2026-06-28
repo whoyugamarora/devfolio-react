@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import { projects } from '@/lib/data'
 
-/* 3-D tilt card for the image preview */
 function TiltPreview({ project }: { project: typeof projects[0] }) {
   const ref = useRef<HTMLDivElement>(null)
   const rx = useMotionValue(0), ry = useMotionValue(0)
@@ -25,13 +24,11 @@ function TiltPreview({ project }: { project: typeof projects[0] }) {
       ref={ref}
       style={{ rotateX: srx, rotateY: sry, transformStyle: 'preserve-3d', perspective: 900 }}
       onMouseMove={move} onMouseLeave={leave}
-      className="rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.08)] w-full shadow-2xl shadow-black/60"
-      style2={{ aspectRatio: '4/3' } as React.CSSProperties}
+      className="rounded-2xl overflow-hidden border border-[var(--border)] w-full shadow-2xl shadow-black/60"
     >
       <div style={{ aspectRatio: '4/3', position: 'relative' }}>
         <Image src={project.image} alt={project.title} fill className="object-cover" sizes="420px" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#06060c]/70 via-transparent to-transparent" />
-        {/* Sheen */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/4 to-transparent pointer-events-none" />
         <div className="absolute bottom-5 left-5">
           <p className="font-display font-bold text-lg text-[#efefef]">{project.title}</p>
@@ -52,7 +49,7 @@ export default function Projects() {
   const [active, setActive] = useState<typeof projects[0] | null>(null)
 
   return (
-    <section id="projects" ref={ref} className="py-28 px-6 border-t border-[rgba(255,255,255,0.06)]">
+    <section id="projects" ref={ref} className="py-28 px-6 border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto">
 
         <div className="flex items-end justify-between mb-16">
@@ -61,7 +58,7 @@ export default function Projects() {
           <motion.h2
             initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="font-display font-black tracking-[-0.04em] text-[#efefef]"
+            className="font-display font-black tracking-[-0.04em] text-[var(--text)]"
             style={{ fontSize: 'clamp(28px,4.5vw,56px)' }}
           >
             Things I&apos;ve built
@@ -70,9 +67,7 @@ export default function Projects() {
 
         <div className="grid lg:grid-cols-[1fr_420px] gap-10 xl:gap-16 items-start">
 
-          {/* Project list */}
           <div className="relative">
-            {/* Large decorative number */}
             <div className="hidden sm:block absolute -right-4 -top-12 font-display font-black text-outline select-none pointer-events-none"
               style={{ fontSize: 'clamp(80px,14vw,160px)' }}>
               {String(projects.length).padStart(2, '0')}
@@ -85,28 +80,28 @@ export default function Projects() {
                 transition={{ duration: 0.55, delay: i * 0.1 }}
                 onMouseEnter={() => setActive(p)}
                 onMouseLeave={() => setActive(null)}
-                className="group py-8 border-b border-[rgba(255,255,255,0.06)] cursor-default"
+                className="group py-8 border-b border-[var(--border)] cursor-default"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-5">
                     <span
                       className="font-display font-black text-5xl leading-none mt-0.5 transition-colors duration-300 shrink-0"
-                      style={{ color: active?.id === p.id ? '#c8ff3b' : '#1a1a1a' }}
+                      style={{ color: active?.id === p.id ? '#c8ff3b' : 'var(--text-5)' }}
                     >
                       0{i + 1}
                     </span>
                     <div>
-                      <h3 className="font-display font-bold text-[22px] text-[#666] group-hover:text-[#efefef] transition-colors duration-200 mb-2 leading-tight">
+                      <h3 className="font-display font-bold text-[22px] text-[var(--text-3)] group-hover:text-[var(--text)] transition-colors duration-200 mb-2 leading-tight">
                         {p.title}
                       </h3>
-                      <p className="text-[#777] text-sm leading-relaxed mb-3 max-w-sm">{p.description}</p>
+                      <p className="text-[var(--text-2)] text-sm leading-relaxed mb-3 max-w-sm">{p.description}</p>
                       <div className="flex flex-wrap gap-1.5">
                         {p.tech.map(t => <span key={t} className="pill">{t}</span>)}
                       </div>
                     </div>
                   </div>
                   <a href={p.github} target="_blank" rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl border border-[rgba(255,255,255,0.07)] text-[#2a2a2a] group-hover:text-[#efefef] group-hover:border-accent/40 transition-all duration-200 shrink-0">
+                    className="p-2.5 rounded-xl border border-[var(--border)] text-[var(--text-4)] group-hover:text-[var(--text)] group-hover:border-accent/40 transition-all duration-200 shrink-0">
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 </div>
@@ -114,7 +109,6 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Sticky 3D image preview */}
           <div className="hidden lg:block lg:sticky lg:top-28" style={{ perspective: '1000px' }}>
             <AnimatePresence mode="wait">
               {active ? (
@@ -129,10 +123,10 @@ export default function Projects() {
               ) : (
                 <motion.div key="empty"
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                  className="rounded-2xl border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)] flex items-center justify-center"
+                  className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] flex items-center justify-center"
                   style={{ aspectRatio: '4/3' }}
                 >
-                  <p className="text-[#1e1e1e] text-sm font-medium tracking-wide">Hover a project ↑</p>
+                  <p className="text-[var(--text-4)] text-sm font-medium tracking-wide">Hover a project ↑</p>
                 </motion.div>
               )}
             </AnimatePresence>

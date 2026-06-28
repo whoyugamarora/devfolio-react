@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { Sun, Moon } from 'lucide-react'
+import { useTheme } from 'next-themes'
 
 const links = [
   { label: 'About',    href: '#about'          },
@@ -17,6 +19,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
+
+  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
     const fn = () => {
@@ -31,11 +37,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [open])
+
+  const isDark = theme === 'dark'
 
   return (
     <>
@@ -44,11 +51,12 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-[#0a0a0a]/85 backdrop-blur-md border-b border-[rgba(255,255,255,0.07)]' : ''
+          scrolled ? 'backdrop-blur-md border-b border-[var(--border)]' : ''
         }`}
+        style={scrolled ? { background: 'var(--overlay)' } : {}}
       >
         <div className="max-w-7xl mx-auto px-6 h-[52px] flex items-center justify-between">
-          <Link href="/" className="font-display font-bold text-sm tracking-[0.18em] text-[#efefef] hover:text-accent transition-colors z-50 relative">
+          <Link href="/" className="font-display font-bold text-sm tracking-[0.18em] text-[var(--text)] hover:text-accent transition-colors z-50 relative">
             YA
           </Link>
 
@@ -58,7 +66,7 @@ export default function Navbar() {
               return (
                 <a key={href} href={href}
                   className={`text-[13px] font-medium transition-colors duration-150 relative group ${
-                    isActive ? 'text-accent' : 'text-[#555] hover:text-[#efefef]'
+                    isActive ? 'text-accent' : 'text-[var(--text-3)] hover:text-[var(--text)]'
                   }`}
                 >
                   {label}
@@ -68,15 +76,27 @@ export default function Navbar() {
             })}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            {mounted && (
+              <button
+                onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                aria-label="Toggle theme"
+                className="p-1.5 rounded-lg border border-[var(--border)] text-[var(--text-3)] hover:text-[var(--text)] hover:border-[var(--border-2)] transition-all"
+              >
+                {isDark
+                  ? <Sun className="w-3.5 h-3.5" />
+                  : <Moon className="w-3.5 h-3.5" />
+                }
+              </button>
+            )}
+
             <Link href="/resume"
               className="hidden md:inline-flex items-center gap-1.5 text-[12px] font-semibold px-3.5 py-1.5 rounded-md bg-accent text-[#0a0a0a] hover:opacity-88 transition-all">
               Resume ↗
             </Link>
 
-            {/* Hamburger — sits above overlay */}
             <button
-              className="md:hidden p-1 text-[#555] hover:text-[#efefef] relative z-50"
+              className="md:hidden p-1 text-[var(--text-3)] hover:text-[var(--text)] relative z-50"
               onClick={() => setOpen(!open)}
               aria-label={open ? 'Close menu' : 'Open menu'}
             >
@@ -98,18 +118,17 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 md:hidden flex flex-col bg-[#06060c]/97 backdrop-blur-md"
+            className="fixed inset-0 z-40 md:hidden flex flex-col backdrop-blur-md"
+            style={{ background: 'var(--overlay)' }}
           >
-            {/* "YA" watermark */}
             <div aria-hidden="true"
               className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-              <p className="font-display font-black leading-none text-white/[0.022]"
+              <p className="font-display font-black leading-none text-outline"
                 style={{ fontSize: 'clamp(160px, 48vw, 320px)' }}>
                 YA
               </p>
             </div>
 
-            {/* Nav links */}
             <nav className="flex-1 flex flex-col justify-center px-8 relative z-10 pt-[52px]">
               {links.map(({ label, href }, i) => (
                 <motion.a
@@ -121,7 +140,7 @@ export default function Navbar() {
                   transition={{ duration: 0.22, delay: i * 0.06 }}
                   onClick={() => setOpen(false)}
                   className={`font-display font-black leading-none py-3 transition-colors duration-150 ${
-                    active === href.slice(1) ? 'text-accent' : 'text-[#efefef] hover:text-accent'
+                    active === href.slice(1) ? 'text-accent' : 'text-[var(--text)] hover:text-accent'
                   }`}
                   style={{ fontSize: 'clamp(38px, 9vw, 58px)' }}
                 >
@@ -143,17 +162,16 @@ export default function Navbar() {
               </motion.div>
             </nav>
 
-            {/* Bottom strip */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, delay: 0.35 }}
-              className="relative z-10 border-t border-[rgba(255,255,255,0.06)] px-8 py-6 flex items-center justify-between"
+              className="relative z-10 border-t border-[var(--border)] px-8 py-6 flex items-center justify-between"
             >
-              <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#444]">Yugam Arora</p>
+              <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[var(--text-4)]">Yugam Arora</p>
               <span className="w-1 h-1 rounded-full bg-accent/50" />
-              <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#444]">Fraser Valley, BC</p>
+              <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[var(--text-4)]">Fraser Valley, BC</p>
             </motion.div>
           </motion.div>
         )}

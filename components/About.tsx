@@ -4,7 +4,6 @@ import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import { personalInfo, stats, deansList } from '@/lib/data'
 
-/* Animate number from 0 to target */
 function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true })
@@ -36,13 +35,13 @@ export default function About() {
   const v = (delay = 0) => ({ hidden: { opacity: 0, y: 22 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay } } })
 
   return (
-    <section id="about" ref={ref} className="py-28 px-6 border-t border-[rgba(255,255,255,0.06)]">
+    <section id="about" ref={ref} className="py-28 px-6 border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto">
 
         <motion.div variants={v()} initial="hidden" animate={show ? 'visible' : 'hidden'}
           className="flex items-center justify-between mb-16">
           <p className="section-num">01 — About</p>
-          <span className="text-[#555] text-xs font-medium">{personalInfo.location}</span>
+          <span className="text-[var(--text-4)] text-xs font-medium">{personalInfo.location}</span>
         </motion.div>
 
         <div className="grid lg:grid-cols-[1fr_380px] gap-14 xl:gap-20 items-start">
@@ -52,7 +51,7 @@ export default function About() {
               <motion.h2
                 initial={{ y: '60%', opacity: 0 }} animate={show ? { y: '0%', opacity: 1 } : {}}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className="font-display font-black tracking-[-0.04em] leading-[0.9] text-[#efefef]"
+                className="font-display font-black tracking-[-0.04em] leading-[0.9] text-[var(--text)]"
                 style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}
               >
                 Building things<br />
@@ -61,20 +60,19 @@ export default function About() {
             </div>
 
             <motion.p variants={v(0.2)} initial="hidden" animate={show ? 'visible' : 'hidden'}
-              className="text-[#888] text-base leading-relaxed max-w-lg mb-10">
+              className="text-[var(--text-2)] text-base leading-relaxed max-w-lg mb-10">
               {personalInfo.bio}
             </motion.p>
 
-            {/* Stats — counting */}
             <motion.div variants={v(0.28)} initial="hidden" animate={show ? 'visible' : 'hidden'}
-              className="grid grid-cols-2 sm:grid-cols-4 border border-[rgba(255,255,255,0.07)] rounded-2xl overflow-hidden mb-10">
+              className="grid grid-cols-2 sm:grid-cols-4 border border-[var(--border)] rounded-2xl overflow-hidden mb-10">
               {statConfig.map((s, i) => (
                 <div key={s.label}
-                  className={`p-5 bg-[rgba(255,255,255,0.02)] ${i > 0 ? 'border-l border-[rgba(255,255,255,0.07)]' : ''}`}>
+                  className={`p-5 bg-[var(--surface)] ${i > 0 ? 'border-l border-[var(--border)]' : ''}`}>
                   <p className="font-display font-black text-3xl text-accent leading-none mb-1">
                     <Counter to={s.value} suffix={s.suffix} />
                   </p>
-                  <p className="text-[#666] text-[11px] font-medium leading-tight">{s.label}</p>
+                  <p className="text-[var(--text-4)] text-[11px] font-medium leading-tight">{s.label}</p>
                 </div>
               ))}
             </motion.div>
@@ -87,7 +85,7 @@ export default function About() {
             </motion.div>
 
             <motion.div variants={v(0.42)} initial="hidden" animate={show ? 'visible' : 'hidden'}
-              className="flex items-center gap-3 text-sm text-[#666]">
+              className="flex items-center gap-3 text-sm text-[var(--text-3)]">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               <span className="text-emerald-400 font-medium">Available for new opportunities</span>
               <span>·</span>
@@ -98,18 +96,16 @@ export default function About() {
           {/* Right */}
           <motion.div variants={v(0.15)} initial="hidden" animate={show ? 'visible' : 'hidden'}
             className="flex flex-col gap-4">
-            <div className="relative rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.07)] group transition-all duration-500 hover:border-[rgba(200,255,59,0.2)] hover:shadow-[0_0_60px_rgba(200,255,59,0.07)]"
+            <div className="relative rounded-2xl overflow-hidden border border-[var(--border)] group transition-all duration-500 hover:border-[rgba(200,255,59,0.2)] hover:shadow-[0_0_60px_rgba(200,255,59,0.07)]"
               style={{ aspectRatio: '3/4' }}>
               <Image src="/images/yugam.webp" alt="Yugam Arora" fill
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                 sizes="380px" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#06060c]/85 via-[#06060c]/10 to-transparent" />
-              {/* Scanlines — visible on hover */}
               <div aria-hidden="true"
                 className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.18) 2px, rgba(0,0,0,0.18) 3px)' }}
               />
-              {/* Accent bleed from bottom */}
               <div aria-hidden="true"
                 className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: 'linear-gradient(to top, rgba(200,255,59,0.06), transparent)' }}
@@ -130,7 +126,7 @@ export default function About() {
 
             <div className="card p-5">
               <p className="text-[10px] font-semibold tracking-widest uppercase text-accent mb-3">Academic Excellence</p>
-              <p className="text-sm font-medium text-[#efefef] mb-3">Dean&apos;s List — 6 Semesters at UFV</p>
+              <p className="text-sm font-medium text-[var(--text)] mb-3">Dean&apos;s List — 6 Semesters at UFV</p>
               <div className="flex flex-wrap gap-1.5">
                 {deansList.map(e => e.semesters.map(s => (
                   <span key={`${e.year}-${s}`} className="pill text-[10px]">{s} {e.year}</span>

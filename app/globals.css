@@ -4,15 +4,50 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
 
-
+/* ── Color tokens — light mode defaults ── */
 :root {
-  --bg: #06060c;
-  --text: #efefef;
-  --muted: #424242;
-  --border: rgba(255,255,255,0.08);
-  --surface: rgba(255,255,255,0.03);
-  --accent: #c8ff3b;
-  --accent2: #60efff;
+  --bg:       #f5f5f0;
+  --bg2:      #ebebE5;
+  --surface:  rgba(0,0,0,0.04);
+  --surface2: rgba(0,0,0,0.07);
+  --text:     #111111;
+  --text-2:   #4a4a4a;
+  --text-3:   #777777;
+  --text-4:   #aaaaaa;
+  --text-5:   #d0d0ca;
+  --border:   rgba(0,0,0,0.09);
+  --border-2: rgba(0,0,0,0.20);
+  --overlay:  rgba(245,245,240,0.92);
+  --muted:    #888;
+  --accent:   #c8ff3b;
+  --accent2:  #60efff;
+  --outline-color: rgba(0,0,0,0.10);
+  --blob-violet: rgba(180,120,255,0.05);
+  --blob-lime:   rgba(160,200,0,0.04);
+  --blob-cyan:   rgba(80,180,200,0.03);
+}
+
+/* ── Color tokens — dark mode overrides ── */
+.dark {
+  --bg:       #06060c;
+  --bg2:      #0d0d0d;
+  --surface:  rgba(255,255,255,0.018);
+  --surface2: rgba(255,255,255,0.04);
+  --text:     #efefef;
+  --text-2:   #888888;
+  --text-3:   #555555;
+  --text-4:   #333333;
+  --text-5:   #1a1a1a;
+  --border:   rgba(255,255,255,0.07);
+  --border-2: rgba(255,255,255,0.15);
+  --overlay:  rgba(6,6,12,0.85);
+  --muted:    #424242;
+  --accent:   #c8ff3b;
+  --accent2:  #60efff;
+  --outline-color: rgba(255,255,255,0.12);
+  --blob-violet: rgba(120,60,220,0.13);
+  --blob-lime:   rgba(200,255,59,0.07);
+  --blob-cyan:   rgba(96,239,255,0.04);
 }
 
 * { box-sizing: border-box; }
@@ -25,6 +60,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 ::-webkit-scrollbar { width: 2px; }
@@ -43,7 +79,7 @@ body {
     border-radius: 14px;
     transition: border-color 0.22s ease, background 0.22s ease;
   }
-  .card:hover { border-color: rgba(255,255,255,0.15); }
+  .card:hover { border-color: var(--border-2); }
 
   .pill {
     display: inline-flex; align-items: center;
@@ -63,7 +99,7 @@ body {
 
   .text-outline {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(255,255,255,0.12);
+    -webkit-text-stroke: 1px var(--outline-color);
   }
   .text-outline-accent {
     color: transparent;
@@ -81,7 +117,7 @@ body {
   to   { transform: translateX(-50%); }
 }
 
-/* ── Blob animations (background depth) ── */
+/* ── Blob animations ── */
 @keyframes blobDrift1 {
   0%,100% { transform: translate(0, 0) scale(1); }
   33%      { transform: translate(6%, -10%) scale(1.09); }

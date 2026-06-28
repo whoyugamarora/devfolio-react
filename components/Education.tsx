@@ -13,7 +13,7 @@ export default function Education() {
   })
 
   return (
-    <section id="education" ref={ref} className="py-28 px-6 border-t border-[rgba(255,255,255,0.06)]">
+    <section id="education" ref={ref} className="py-28 px-6 border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto">
 
         <div className="flex items-end justify-between mb-16">
@@ -27,7 +27,7 @@ export default function Education() {
           <motion.h2
             initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="font-display font-black tracking-[-0.04em] text-[#efefef]"
+            className="font-display font-black tracking-[-0.04em] text-[var(--text)]"
             style={{ fontSize: 'clamp(28px,4.5vw,56px)' }}
           >
             Where I studied
@@ -36,19 +36,18 @@ export default function Education() {
 
         <div className="grid lg:grid-cols-[1fr_360px] gap-14 xl:gap-20 items-start">
 
-          {/* Left — degree + coursework */}
           <div>
             <motion.div variants={v(0.05)} initial="hidden" animate={show ? 'visible' : 'hidden'} className="mb-10">
               <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] flex items-center justify-center shrink-0">
+                <div className="w-14 h-14 rounded-2xl border border-[var(--border)] bg-[var(--surface)] flex items-center justify-center shrink-0">
                   <GraduationCap className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <h3 className="font-display font-black text-[22px] text-[#efefef] leading-tight mb-1">
+                  <h3 className="font-display font-black text-[22px] text-[var(--text)] leading-tight mb-1">
                     {education.degree}
                   </h3>
-                  <p className="text-[#777] text-sm mb-2">{education.institution}</p>
-                  <div className="flex flex-wrap items-center gap-3 text-[#555] text-xs">
+                  <p className="text-[var(--text-2)] text-sm mb-2">{education.institution}</p>
+                  <div className="flex flex-wrap items-center gap-3 text-[var(--text-3)] text-xs">
                     <span className="inline-flex items-center gap-1.5">
                       <Calendar className="w-3 h-3" />{education.duration}
                     </span>
@@ -62,7 +61,7 @@ export default function Education() {
             </motion.div>
 
             <motion.div variants={v(0.12)} initial="hidden" animate={show ? 'visible' : 'hidden'}>
-              <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#555] mb-4">
+              <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[var(--text-3)] mb-4">
                 Relevant Coursework
               </p>
               <div className="grid sm:grid-cols-2 gap-2.5">
@@ -72,7 +71,7 @@ export default function Education() {
                     initial={{ opacity: 0, x: -8 }}
                     animate={show ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.3, delay: 0.18 + i * 0.05 }}
-                    className="flex items-center gap-2.5 text-sm text-[#888]"
+                    className="flex items-center gap-2.5 text-sm text-[var(--text-2)]"
                   >
                     <span className="w-1 h-1 rounded-full bg-accent/50 shrink-0" />
                     {course}
@@ -82,7 +81,6 @@ export default function Education() {
             </motion.div>
           </div>
 
-          {/* Right — Dean's List + skills */}
           <motion.div
             variants={v(0.15)} initial="hidden" animate={show ? 'visible' : 'hidden'}
             className="flex flex-col gap-4"
@@ -91,7 +89,7 @@ export default function Education() {
               <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-accent mb-2">
                 Academic Excellence
               </p>
-              <p className="font-display font-bold text-lg text-[#efefef] mb-3">
+              <p className="font-display font-bold text-lg text-[var(--text)] mb-3">
                 Dean&apos;s List — 6 Semesters
               </p>
               <div className="flex flex-wrap gap-1.5">
@@ -102,7 +100,7 @@ export default function Education() {
             </div>
 
             <div className="card p-5">
-              <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#555] mb-4">
+              <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[var(--text-3)] mb-4">
                 Skills Gained
               </p>
               <div className="flex flex-col gap-2.5">
@@ -112,7 +110,7 @@ export default function Education() {
                     initial={{ opacity: 0, x: 8 }}
                     animate={show ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.3, delay: 0.25 + i * 0.05 }}
-                    className="flex items-center gap-2.5 text-sm text-[#888]"
+                    className="flex items-center gap-2.5 text-sm text-[var(--text-2)]"
                   >
                     <span className="w-1 h-1 rounded-full bg-accent/30 shrink-0" />
                     {skill}

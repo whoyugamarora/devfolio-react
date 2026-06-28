@@ -14,22 +14,20 @@ function Entry({ e, i, show }: { e: ExperienceEntry; i: number; show: boolean })
     <motion.div
       initial={{ opacity: 0, y: 18 }} animate={show ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay: i * 0.12 }}
-      className="border-b border-[rgba(255,255,255,0.06)] last:border-0"
+      className="border-b border-[var(--border)] last:border-0"
     >
       <button onClick={() => setOpen(!open)}
         className="w-full py-7 flex items-center justify-between gap-4 group text-left">
         <div className="flex items-center gap-6">
-          {/* Number */}
           <span className="font-display font-black text-[40px] leading-none shrink-0 transition-colors duration-300"
-            style={{ color: open ? c : '#181818' }}>
+            style={{ color: open ? c : 'var(--text-5)' }}>
             0{i + 1}
           </span>
-          {/* Info */}
           <div>
-            <p className="font-display font-bold text-xl text-[#666] group-hover:text-[#efefef] transition-colors duration-200 mb-0.5">
+            <p className="font-display font-bold text-xl text-[var(--text-3)] group-hover:text-[var(--text)] transition-colors duration-200 mb-0.5">
               {e.role}
             </p>
-            <div className="flex items-center gap-2 text-[#555] text-xs">
+            <div className="flex items-center gap-2 text-[var(--text-3)] text-xs">
               <span>{e.company}</span>
               <span>·</span>
               <span>{e.duration}</span>
@@ -43,7 +41,7 @@ function Entry({ e, i, show }: { e: ExperienceEntry; i: number; show: boolean })
           <motion.div
             animate={{ rotate: open ? 45 : 0 }}
             transition={{ duration: 0.22 }}
-            className="w-7 h-7 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center text-[#555] group-hover:text-[#efefef] group-hover:border-accent/50 transition-all"
+            className="w-7 h-7 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-3)] group-hover:text-[var(--text)] group-hover:border-accent/50 transition-all"
           >
             <span className="text-base leading-none">+</span>
           </motion.div>
@@ -67,7 +65,7 @@ function Entry({ e, i, show }: { e: ExperienceEntry; i: number; show: boolean })
                       key={bi}
                       initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: bi * 0.06 }}
-                      className="flex gap-3 text-[#888] text-sm leading-relaxed"
+                      className="flex gap-3 text-[var(--text-2)] text-sm leading-relaxed"
                     >
                       <span className="mt-[8px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: c + '80' }} />
                       {b}
@@ -88,7 +86,7 @@ export default function Experience() {
   const show = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="experience" ref={ref} className="py-28 px-6 border-t border-[rgba(255,255,255,0.06)]">
+    <section id="experience" ref={ref} className="py-28 px-6 border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto">
 
         <div className="flex items-end justify-between mb-16">
@@ -97,7 +95,7 @@ export default function Experience() {
           <motion.h2
             initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="font-display font-black tracking-[-0.04em] text-[#efefef]"
+            className="font-display font-black tracking-[-0.04em] text-[var(--text)]"
             style={{ fontSize: 'clamp(28px,4.5vw,56px)' }}
           >
             Where I&apos;ve worked

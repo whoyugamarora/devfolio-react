@@ -8,7 +8,6 @@ import { personalInfo } from '@/lib/data'
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%!?&'
 
 function ScrambleText({ text, startDelay = 0 }: { text: string; startDelay?: number }) {
-  // Initialize with real text so SSR and client hydration match
   const [display, setDisplay] = useState<string[]>(() => text.split(''))
 
   useEffect(() => {
@@ -80,7 +79,7 @@ function MagBtn({ href, children, solid, external }: {
       className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-medium text-xs tracking-wide transition-opacity hover:opacity-80 ${
         solid
           ? 'bg-accent text-[#06060c]'
-          : 'border border-[rgba(255,255,255,0.12)] text-[#555] hover:text-[#efefef]'
+          : 'border border-[var(--border-2)] text-[var(--text-3)] hover:text-[var(--text)]'
       }`}
     >
       {children}
@@ -97,7 +96,6 @@ const marqueeItems = [
 export default function Hero() {
   const [aroraHover, setAroraHover] = useState(false)
 
-  // Parallax
   const { scrollY } = useScroll()
   const yugamYRaw = useTransform(scrollY, [0, 600], [0, -45])
   const aroraYRaw  = useTransform(scrollY, [0, 600], [0, -100])
@@ -106,7 +104,6 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Hero-specific grain — stronger than the global AuroraBackground layer */}
       <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none opacity-[0.072] mix-blend-overlay"
         style={{
           backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
@@ -114,26 +111,23 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Name block ── */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-4 relative z-10">
 
-        {/* Status tag */}
         <motion.div
           initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.15 }}
           className="flex items-center gap-2 mb-6 sm:mb-8"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-          <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#666]">
+          <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[var(--text-3)]">
             Open to Work &nbsp;·&nbsp; {personalInfo.location}
           </span>
         </motion.div>
 
-        {/* YUGAM — parallax layer wraps the clip container */}
         <motion.div style={{ y: yugamY }} className="w-full leading-none mb-[-0.06em]">
           <div className="overflow-hidden w-full text-center">
             <motion.h1
-              className="font-display font-black text-[#efefef] block leading-none"
+              className="font-display font-black text-[var(--text)] block leading-none"
               style={{ fontSize: 'clamp(72px, 19vw, 260px)', letterSpacing: '-0.01em' }}
               initial={{ y: '100%' }}
               animate={{ y: '0%' }}
@@ -144,7 +138,6 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* ARORA. — parallax + glitch + neon fill */}
         <motion.div style={{ y: aroraY }} className="w-full leading-none">
           <div
             className="overflow-hidden w-full text-center cursor-default"
@@ -169,17 +162,16 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Bottom strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
           className="w-full flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mt-10 sm:mt-12"
         >
           <div className="max-w-xs">
-            <p className="text-[10px] font-medium tracking-[0.16em] uppercase text-[#777] leading-relaxed">
+            <p className="text-[10px] font-medium tracking-[0.16em] uppercase text-[var(--text-2)] leading-relaxed">
               <Typewriter texts={personalInfo.taglines} />
             </p>
-            <p className="text-[11px] text-[#777] mt-2 leading-relaxed max-w-[240px]">
+            <p className="text-[11px] text-[var(--text-2)] mt-2 leading-relaxed max-w-[240px]">
               {personalInfo.bio}
             </p>
           </div>
@@ -202,29 +194,30 @@ export default function Hero() {
                   target={ext ? '_blank' : undefined}
                   rel={ext ? 'noopener noreferrer' : undefined}
                   aria-label={label}
-                  className="p-2 rounded-lg border border-[rgba(255,255,255,0.06)] text-[#555] hover:text-[#efefef] hover:border-[rgba(255,255,255,0.16)] transition-all">
+                  className="p-2 rounded-lg border border-[var(--border)] text-[var(--text-3)] hover:text-[var(--text)] hover:border-[var(--border-2)] transition-all">
                   <Icon className="w-3.5 h-3.5" />
                 </a>
               ))}
             </div>
-            <p className="text-[9px] tracking-[0.2em] uppercase text-[#444]">
+            <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--text-4)]">
               Designation 001 &nbsp;·&nbsp; IT Administrator
             </p>
           </div>
         </motion.div>
       </div>
 
-      {/* ── Marquee strip ── */}
+      {/* Marquee strip */}
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.5 }}
-        className="border-t border-[rgba(255,255,255,0.05)] py-3.5 overflow-hidden bg-[rgba(255,255,255,0.006)] relative z-10"
+        className="border-t border-[var(--border)] py-3.5 overflow-hidden relative z-10"
+        style={{ background: 'var(--surface)' }}
       >
         <div className="marquee-track select-none">
           {[0, 1].map(k => (
             <span key={k} className="inline-flex items-center">
               {marqueeItems.map(item => (
-                <span key={item} className="inline-flex items-center gap-4 px-4 text-[9px] font-medium tracking-[0.18em] uppercase text-[#444]">
+                <span key={item} className="inline-flex items-center gap-4 px-4 text-[9px] font-medium tracking-[0.18em] uppercase text-[var(--text-4)]">
                   <span className="w-[3px] h-[3px] rounded-full bg-accent/50 shrink-0" />
                   {item}
                 </span>
@@ -233,7 +226,6 @@ export default function Hero() {
           ))}
         </div>
       </motion.div>
-
     </section>
   )
 }

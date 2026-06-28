@@ -22,10 +22,10 @@ export default function Contact() {
   }
 
   const inputClass =
-    'w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-xl px-4 py-3 text-sm text-[#efefef] placeholder-[#2a2a2a] focus:outline-none focus:border-accent/50 transition-colors'
+    'w-full bg-[var(--surface)] border border-[var(--border)] rounded-xl px-4 py-3 text-sm text-[var(--text)] placeholder-[var(--text-4)] focus:outline-none focus:border-accent/50 transition-colors'
 
   return (
-    <section id="contact" ref={ref} className="py-28 px-6 border-t border-[rgba(255,255,255,0.06)]">
+    <section id="contact" ref={ref} className="py-28 px-6 border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto">
 
         <div className="flex items-end justify-between mb-16">
@@ -39,7 +39,7 @@ export default function Contact() {
           <motion.h2
             initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="font-display font-black tracking-[-0.04em] text-[#efefef]"
+            className="font-display font-black tracking-[-0.04em] text-[var(--text)]"
             style={{ fontSize: 'clamp(28px,4.5vw,56px)' }}
           >
             Get in touch
@@ -48,7 +48,6 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-[1fr_380px] gap-14 xl:gap-20 items-start">
 
-          {/* Form */}
           <motion.form
             initial={{ opacity: 0, y: 20 }} animate={show ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -57,7 +56,7 @@ export default function Contact() {
           >
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-[10px] font-bold tracking-[0.18em] uppercase text-[#555] mb-2">Name</label>
+                <label className="block text-[10px] font-bold tracking-[0.18em] uppercase text-[var(--text-3)] mb-2">Name</label>
                 <input
                   required value={name} onChange={e => setName(e.target.value)}
                   placeholder="Your name"
@@ -65,7 +64,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-bold tracking-[0.18em] uppercase text-[#555] mb-2">Email</label>
+                <label className="block text-[10px] font-bold tracking-[0.18em] uppercase text-[var(--text-3)] mb-2">Email</label>
                 <input
                   type="email" required value={email} onChange={e => setEmail(e.target.value)}
                   placeholder="your@email.com"
@@ -75,7 +74,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-[10px] font-bold tracking-[0.18em] uppercase text-[#555] mb-2">Message</label>
+              <label className="block text-[10px] font-bold tracking-[0.18em] uppercase text-[var(--text-3)] mb-2">Message</label>
               <textarea
                 required rows={7} value={message} onChange={e => setMessage(e.target.value)}
                 placeholder="What's on your mind?"
@@ -106,51 +105,47 @@ export default function Contact() {
             </AnimatePresence>
           </motion.form>
 
-          {/* Sidebar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={show ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col gap-4"
           >
-            {/* Availability */}
             <div className="card p-5">
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                 <span className="text-emerald-400 font-semibold text-sm">Available for opportunities</span>
               </div>
-              <p className="text-[#555] text-sm leading-relaxed">
+              <p className="text-[var(--text-3)] text-sm leading-relaxed">
                 Open to full-time roles, contracts, and collaborations — remote worldwide.
               </p>
             </div>
 
-            {/* Direct email */}
             <div className="card p-5">
-              <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#555] mb-3">Direct email</p>
+              <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[var(--text-3)] mb-3">Direct email</p>
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="group font-display font-bold text-[#efefef] hover:text-accent transition-colors text-base inline-flex items-center gap-1.5"
+                className="group font-display font-bold text-[var(--text)] hover:text-accent transition-colors text-base inline-flex items-center gap-1.5"
               >
                 {personalInfo.email}
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             </div>
 
-            {/* Socials */}
             <div className="card p-5">
-              <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#555] mb-4">Find me on</p>
+              <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[var(--text-3)] mb-4">Find me on</p>
               <div className="flex flex-col gap-3">
                 {[
                   { Icon: Github,   label: 'GitHub',   href: personalInfo.github,   sub: '@whoyugamarora' },
                   { Icon: Linkedin, label: 'LinkedIn',  href: personalInfo.linkedin, sub: 'in/yugam-arora'  },
                 ].map(({ Icon, label, href, sub }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                    className="group flex items-center gap-3 text-[#555] hover:text-[#efefef] transition-colors">
-                    <div className="w-8 h-8 rounded-lg border border-[rgba(255,255,255,0.07)] flex items-center justify-center group-hover:border-accent/40 transition-colors shrink-0">
+                    className="group flex items-center gap-3 text-[var(--text-3)] hover:text-[var(--text)] transition-colors">
+                    <div className="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center group-hover:border-accent/40 transition-colors shrink-0">
                       <Icon className="w-3.5 h-3.5" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-xs font-semibold text-[#efefef]">{label}</p>
-                      <p className="text-[11px] text-[#444]">{sub}</p>
+                      <p className="text-xs font-semibold text-[var(--text)]">{label}</p>
+                      <p className="text-[11px] text-[var(--text-4)]">{sub}</p>
                     </div>
                     <ArrowUpRight className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                   </a>
