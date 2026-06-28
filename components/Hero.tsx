@@ -91,6 +91,7 @@ function MagBtn({ href, children, solid, external }: {
 const marqueeItems = [
   'IT Administrator', 'Security Enthusiast', 'Cloud Practitioner',
   "Dean's List × 6", 'Problem Solver', 'Systems Builder', 'Network Admin',
+  '⌃K — terminal',
 ]
 
 export default function Hero() {

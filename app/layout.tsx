@@ -4,6 +4,7 @@ import { Providers } from './providers'
 import CustomCursor from '@/components/CustomCursor'
 import ScrollProgress from '@/components/ScrollProgress'
 import PageTransition from '@/components/PageTransition'
+import Terminal from '@/components/Terminal'
 
 export const metadata: Metadata = {
   title: 'Yugam Arora — IT Portfolio',
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <CustomCursor />
           <ScrollProgress />
+          <Terminal />
           <PageTransition>{children}</PageTransition>
         </Providers>
       </body>
