@@ -32,7 +32,7 @@ function TiltPreview({ project }: { project: typeof projects[0] }) {
         <div className="absolute inset-0 bg-gradient-to-br from-white/4 to-transparent pointer-events-none" />
         <div className="absolute bottom-5 left-5">
           <p className="font-display font-bold text-lg text-[#efefef]">{project.title}</p>
-          {project.featured && <span className="text-[10px] font-bold tracking-widest uppercase text-accent">Featured</span>}
+          {project.featured && <span className="text-[10px] font-bold tracking-widest uppercase text-[var(--accent-text)]">Featured</span>}
         </div>
         <a href={project.github} target="_blank" rel="noopener noreferrer"
           className="absolute top-4 right-4 p-2 rounded-lg bg-[#06060c]/60 backdrop-blur-sm border border-[rgba(255,255,255,0.1)] text-[#888] hover:text-[#efefef] transition-all">
@@ -86,7 +86,7 @@ export default function Projects() {
                   <div className="flex items-start gap-5">
                     <span
                       className="font-display font-black text-5xl leading-none mt-0.5 transition-colors duration-300 shrink-0"
-                      style={{ color: active?.id === p.id ? '#c8ff3b' : 'var(--text-5)' }}
+                      style={{ color: active?.id === p.id ? 'var(--accent-text)' : 'var(--text-5)' }}
                     >
                       0{i + 1}
                     </span>

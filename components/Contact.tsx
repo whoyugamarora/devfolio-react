@@ -124,7 +124,7 @@ export default function Contact() {
               <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[var(--text-3)] mb-3">Direct email</p>
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="group font-display font-bold text-[var(--text)] hover:text-accent transition-colors text-base inline-flex items-center gap-1.5"
+                className="group font-display font-bold text-[var(--text)] hover:text-[var(--accent-text)] transition-colors text-base inline-flex items-center gap-1.5"
               >
                 {personalInfo.email}
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />

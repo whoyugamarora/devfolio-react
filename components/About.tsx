@@ -55,7 +55,7 @@ export default function About() {
                 style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}
               >
                 Building things<br />
-                <span className="text-accent">that matter</span>
+                <span className="text-[var(--accent-text)]">that matter</span>
               </motion.h2>
             </div>
 
@@ -69,7 +69,7 @@ export default function About() {
               {statConfig.map((s, i) => (
                 <div key={s.label}
                   className={`p-5 bg-[var(--surface)] ${i > 0 ? 'border-l border-[var(--border)]' : ''}`}>
-                  <p className="font-display font-black text-3xl text-accent leading-none mb-1">
+                  <p className="font-display font-black text-3xl text-[var(--accent-text)] leading-none mb-1">
                     <Counter to={s.value} suffix={s.suffix} />
                   </p>
                   <p className="text-[var(--text-4)] text-[11px] font-medium leading-tight">{s.label}</p>
@@ -125,7 +125,7 @@ export default function About() {
             </div>
 
             <div className="card p-5">
-              <p className="text-[10px] font-semibold tracking-widest uppercase text-accent mb-3">Academic Excellence</p>
+              <p className="text-[10px] font-semibold tracking-widest uppercase text-[var(--accent-text)] mb-3">Academic Excellence</p>
               <p className="text-sm font-medium text-[var(--text)] mb-3">Dean&apos;s List — 6 Semesters at UFV</p>
               <div className="flex flex-wrap gap-1.5">
                 {deansList.map(e => e.semesters.map(s => (

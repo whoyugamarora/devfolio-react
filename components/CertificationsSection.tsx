@@ -34,7 +34,7 @@ export default function CertificationsSection() {
               Certifications
             </motion.h2>
             <motion.div initial={{ opacity: 0 }} animate={show ? { opacity: 1 } : {}} transition={{ delay: 0.2 }}>
-              <Link href="/certifications" className="text-sm text-[var(--text-3)] hover:text-accent transition-colors pb-2">
+              <Link href="/certifications" className="text-sm text-[var(--text-3)] hover:text-[var(--accent-text)] transition-colors pb-2">
                 View all →
               </Link>
             </motion.div>
@@ -76,7 +76,7 @@ export default function CertificationsSection() {
           transition={{ duration: 0.5, delay: 0.48 }}
           className="card p-6" style={{ borderLeftWidth: 2, borderLeftColor: '#c8ff3b' }}
         >
-          <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-accent mb-2">Academic Excellence</p>
+          <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-[var(--accent-text)] mb-2">Academic Excellence</p>
           <p className="font-display font-bold text-lg text-[var(--text)] mb-1">
             Dean&apos;s List — University of the Fraser Valley
           </p>

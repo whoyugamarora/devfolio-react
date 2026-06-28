@@ -40,7 +40,7 @@ export default function Education() {
             <motion.div variants={v(0.05)} initial="hidden" animate={show ? 'visible' : 'hidden'} className="mb-10">
               <div className="flex items-start gap-5">
                 <div className="w-14 h-14 rounded-2xl border border-[var(--border)] bg-[var(--surface)] flex items-center justify-center shrink-0">
-                  <GraduationCap className="w-6 h-6 text-accent" />
+                  <GraduationCap className="w-6 h-6 text-[var(--accent-text)]" />
                 </div>
                 <div>
                   <h3 className="font-display font-black text-[22px] text-[var(--text)] leading-tight mb-1">
@@ -86,7 +86,7 @@ export default function Education() {
             className="flex flex-col gap-4"
           >
             <div className="card p-5" style={{ borderLeftWidth: 2, borderLeftColor: '#c8ff3b' }}>
-              <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-accent mb-2">
+              <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-[var(--accent-text)] mb-2">
                 Academic Excellence
               </p>
               <p className="font-display font-bold text-lg text-[var(--text)] mb-3">

@@ -56,7 +56,7 @@ export default function Navbar() {
         style={scrolled ? { background: 'var(--overlay)' } : {}}
       >
         <div className="max-w-7xl mx-auto px-6 h-[52px] flex items-center justify-between">
-          <Link href="/" className="font-display font-bold text-sm tracking-[0.18em] text-[var(--text)] hover:text-accent transition-colors z-50 relative">
+          <Link href="/" className="font-display font-bold text-sm tracking-[0.18em] text-[var(--text)] hover:text-[var(--accent-text)] transition-colors z-50 relative">
             YA
           </Link>
 
@@ -66,7 +66,7 @@ export default function Navbar() {
               return (
                 <a key={href} href={href}
                   className={`text-[13px] font-medium transition-colors duration-150 relative group ${
-                    isActive ? 'text-accent' : 'text-[var(--text-3)] hover:text-[var(--text)]'
+                    isActive ? 'text-[var(--accent-text)]' : 'text-[var(--text-3)] hover:text-[var(--text)]'
                   }`}
                 >
                   {label}
@@ -140,7 +140,7 @@ export default function Navbar() {
                   transition={{ duration: 0.22, delay: i * 0.06 }}
                   onClick={() => setOpen(false)}
                   className={`font-display font-black leading-none py-3 transition-colors duration-150 ${
-                    active === href.slice(1) ? 'text-accent' : 'text-[var(--text)] hover:text-accent'
+                    active === href.slice(1) ? 'text-[var(--accent-text)]' : 'text-[var(--text)] hover:text-[var(--accent-text)]'
                   }`}
                   style={{ fontSize: 'clamp(38px, 9vw, 58px)' }}
                 >
@@ -154,7 +154,7 @@ export default function Navbar() {
                 transition={{ duration: 0.22, delay: links.length * 0.06 }}
               >
                 <Link href="/resume" onClick={() => setOpen(false)}
-                  className="font-display font-black leading-none py-3 text-accent hover:opacity-75 transition-opacity inline-block"
+                  className="font-display font-black leading-none py-3 text-[var(--accent-text)] hover:opacity-75 transition-opacity inline-block"
                   style={{ fontSize: 'clamp(38px, 9vw, 58px)' }}
                 >
                   Resume ↗
