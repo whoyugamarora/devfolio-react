@@ -96,7 +96,7 @@ export default function About() {
           {/* Right */}
           <motion.div variants={v(0.15)} initial="hidden" animate={show ? 'visible' : 'hidden'}
             className="flex flex-col gap-4">
-            <div className="relative rounded-2xl overflow-hidden border border-[var(--border)] group transition-all duration-500 hover:border-[rgba(200,255,59,0.2)] hover:shadow-[0_0_60px_rgba(200,255,59,0.07)]"
+            <div className="photo-card relative rounded-2xl overflow-hidden border border-[var(--border)] group"
               style={{ aspectRatio: '3/4' }}>
               <Image src="/images/yugam.webp" alt="Yugam Arora" fill
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
@@ -108,7 +108,7 @@ export default function About() {
               />
               <div aria-hidden="true"
                 className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: 'linear-gradient(to top, rgba(200,255,59,0.06), transparent)' }}
+                style={{ background: 'linear-gradient(to top, rgb(var(--accent-rgb) / 0.06), transparent)' }}
               />
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="backdrop-blur-md bg-[#06060c]/60 border border-[rgba(255,255,255,0.08)] rounded-xl px-4 py-3 flex justify-between">

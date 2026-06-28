@@ -74,7 +74,7 @@ export default function CertificationsSection() {
         <motion.div
           initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.48 }}
-          className="card p-6" style={{ borderLeftWidth: 2, borderLeftColor: '#c8ff3b' }}
+          className="card p-6" style={{ borderLeftWidth: 2, borderLeftColor: 'var(--accent)' }}
         >
           <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-[var(--accent-text)] mb-2">Academic Excellence</p>
           <p className="font-display font-bold text-lg text-[var(--text)] mb-1">

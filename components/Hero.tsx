@@ -78,7 +78,7 @@ function MagBtn({ href, children, solid, external }: {
       rel={external ? 'noopener noreferrer' : undefined}
       className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-medium text-xs tracking-wide transition-opacity hover:opacity-80 ${
         solid
-          ? 'bg-accent text-[#06060c]'
+          ? 'bg-accent text-[var(--accent-contrast)]'
           : 'border border-[var(--border-2)] text-[var(--text-3)] hover:text-[var(--text)]'
       }`}
     >
@@ -149,8 +149,8 @@ export default function Hero() {
               style={{
                 fontSize: 'clamp(72px, 19vw, 260px)',
                 letterSpacing: '-0.01em',
-                color: aroraHover ? '#c8ff3b' : 'transparent',
-                WebkitTextStroke: `clamp(1px, 0.15vw, 2px) ${aroraHover ? 'transparent' : 'rgba(200,255,59,0.55)'}`,
+                color: aroraHover ? 'var(--accent)' : 'transparent',
+                WebkitTextStroke: `clamp(1px, 0.15vw, 2px) ${aroraHover ? 'transparent' : 'var(--arora-stroke)'}`,
                 transition: 'color 0.35s ease, -webkit-text-stroke-color 0.35s ease',
               }}
               initial={{ y: '100%' }}

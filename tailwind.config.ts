@@ -15,7 +15,7 @@ const config: Config = {
         body:    ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
-        accent: '#c8ff3b',
+        accent: 'rgb(var(--accent-rgb) / <alpha-value>)',
         accent2: '#60efff',
       },
       animation: {

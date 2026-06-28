@@ -85,7 +85,7 @@ export default function Education() {
             variants={v(0.15)} initial="hidden" animate={show ? 'visible' : 'hidden'}
             className="flex flex-col gap-4"
           >
-            <div className="card p-5" style={{ borderLeftWidth: 2, borderLeftColor: '#c8ff3b' }}>
+            <div className="card p-5" style={{ borderLeftWidth: 2, borderLeftColor: 'var(--accent)' }}>
               <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-[var(--accent-text)] mb-2">
                 Academic Excellence
               </p>

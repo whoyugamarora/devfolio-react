@@ -97,7 +97,7 @@ export default function Contact() {
                   key="btn"
                   type="submit"
                   whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-[#06060c] text-sm font-semibold hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-[var(--accent-contrast)] text-sm font-semibold hover:opacity-90 transition-opacity"
                 >
                   Send message <Send className="w-3.5 h-3.5" />
                 </motion.button>

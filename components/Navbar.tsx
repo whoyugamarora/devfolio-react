@@ -91,7 +91,7 @@ export default function Navbar() {
             )}
 
             <Link href="/resume"
-              className="hidden md:inline-flex items-center gap-1.5 text-[12px] font-semibold px-3.5 py-1.5 rounded-md bg-accent text-[#0a0a0a] hover:opacity-88 transition-all">
+              className="hidden md:inline-flex items-center gap-1.5 text-[12px] font-semibold px-3.5 py-1.5 rounded-md bg-accent text-[var(--accent-contrast)] hover:opacity-88 transition-all">
               Resume ↗
             </Link>
 
