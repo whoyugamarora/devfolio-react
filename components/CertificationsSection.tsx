@@ -23,7 +23,7 @@ export default function CertificationsSection() {
 
         <div className="flex items-end justify-between mb-16">
           <motion.p initial={{ opacity: 0, x: -16 }} animate={show ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5 }} className="section-num">05 — Credentials</motion.p>
+            transition={{ duration: 0.5 }} className="section-num">06 — Credentials</motion.p>
           <div className="flex items-end gap-6">
             <motion.h2
               initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}}

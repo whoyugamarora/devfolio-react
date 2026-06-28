@@ -34,7 +34,7 @@ export default function Contact() {
             transition={{ duration: 0.5 }}
             className="section-num"
           >
-            06 — Contact
+            07 — Contact
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}}
