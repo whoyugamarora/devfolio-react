@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
 
 :root {
   --bg: #06060c;
@@ -32,8 +34,8 @@ body {
 
 /* ── Utilities ── */
 @layer utilities {
-  .font-display { font-family: var(--font-display), system-ui, sans-serif; }
-  .font-body { font-family: var(--font-body), system-ui, sans-serif; }
+  .font-display { font-family: 'Big Shoulders Display', system-ui, sans-serif; }
+  .font-body { font-family: 'Space Grotesk', system-ui, sans-serif; }
 
   .card {
     background: var(--surface);
